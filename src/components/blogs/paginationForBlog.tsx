@@ -7,14 +7,16 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from '../ui' // Make sure this path is correct
+} from '../ui' 
 
 export default function PaginationForBlog({
   page,
   noOfPages,
+  basePath = '/insights'
 }: {
   page: number
   noOfPages: number
+  basePath?: string
 }) {
 
   const getPageNumbers = () => {
@@ -55,7 +57,7 @@ export default function PaginationForBlog({
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            href={isPrevDisabled ? '#' : `/blogs?page=${page - 1}`}
+            href={isPrevDisabled ? '#' : `${basePath}?page=${page - 1}`}
             aria-disabled={isPrevDisabled}
             className={
               isPrevDisabled ? 'pointer-events-none opacity-50' : ''
@@ -71,7 +73,7 @@ export default function PaginationForBlog({
             </PaginationItem>
           ) : (
             <PaginationItem key={i}>
-              <PaginationLink isActive={page === e} href={`/blogs?page=${e}`}>
+              <PaginationLink isActive={page === e} href={`${basePath}?page=${e}`}>
                 {e}
               </PaginationLink>
             </PaginationItem>
@@ -80,7 +82,7 @@ export default function PaginationForBlog({
 
         <PaginationItem>
           <PaginationNext
-            href={isNextDisabled ? '#' : `/blogs?page=${page + 1}`}
+            href={isNextDisabled ? '#' : `${basePath}?page=${page + 1}`}
             aria-disabled={isNextDisabled}
             className={
               isNextDisabled ? 'pointer-events-none opacity-50' : ''

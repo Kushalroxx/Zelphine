@@ -4,9 +4,9 @@ import mailerInstance from "@/lib/sendMail";
 
 export async function POST(request: Request) {
     const data = await request.json();
-    const { name, email, phone, description } = data;
+    const { name, email, phone, description, projectType } = data;
 
-    if (!name || !email || !phone || !description) {
+    if (!name || !email || !description || !projectType) {
         return NextResponse.json({ error: "All fields are required." }, { status: 400 });
     }
     try {
@@ -16,11 +16,12 @@ export async function POST(request: Request) {
                 email,
                 phone,
                 description,
+                projectType,
             },
         });
         setTimeout(async() => {
         try {
-            await mailerInstance.sendContactMail(email, name, phone, description);
+            await mailerInstance.sendContactMail(email, name, phone, description, projectType);
         } catch (error) {
         }
         }, 0);

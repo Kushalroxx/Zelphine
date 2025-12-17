@@ -11,7 +11,8 @@ model CustomerContacts{
   id        String      @id @default(cuid())
   name      String
   email     String
-  phone     String
+  phone     String?
+  projectType String
   description   String
   createdAt DateTime @default(now())
 }

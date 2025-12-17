@@ -2,82 +2,102 @@
 import React from 'react'
 import { ContactForm } from './contactForm'
 import InViewAnimation from '../majorUi/inViewAnimation'
-import {motion} from "framer-motion"
-import { Mail, Phone, MapPin } from 'lucide-react' 
+import { Mail, MapPin } from 'lucide-react' 
 
 export default function Contact() {
     return (
-        <div className='pt-24 pb-20 relative w-full overflow-hidden'>
-             <motion.div
-                className="absolute bottom-20 left-0 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-chart-3/15 md:bg-chart-3/15 blur-3xl filter transform-gpu"
-                animate={{
-                  x: [0, 100, -50, 0],
-                  y: [0, -50, 100, 0],
-                  scale: [1, 1.2, 0.8, 1],
-                  rotate: [0, 90, -30, 0],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                }}
-              />
-              <motion.div
-                className="absolute top-20 right-0 h-[300px] w-[300px] md:h-[400px] md:w-[400px] rounded-full bg-chart-3/10 md:bg-chart-3/15 blur-3xl filter transform-gpu"
-                animate={{
-                  x: [0, -80, 40, 0],
-                  y: [0, 60, -100, 0],
-                  scale: [1, 1.1, 0.9, 1],
-                  rotate: [0, -60, 50, 0],
-                }}
-                transition={{
-                  duration: 25,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                  delay: 5, 
-                }}
-              />
-            <div className='mb-8 md:mb-16 text-center'>
-                <InViewAnimation className='flex justify-center' delay={0.15}>
-                    <h1 className='text-foreground text-3xl md:text-5xl font-extrabold px-2 leading-tight max-w-4xl'>Let’s Build Your Digital Presence Together</h1>
-                </InViewAnimation>
-                <InViewAnimation className='flex justify-center mt-4' delay={0.2}>
-                    <p className='text-foreground/80 text-lg max-w-2xl px-5'>
-                        Fill out the form below, or reach out directly. We're excited to hear about your project.
-                    </p>
-                </InViewAnimation>
+        <div className='min-h-screen relative overflow-hidden selection:bg-blue-100 selection:text-blue-900'>
+            <div className="absolute inset-0 z-0 opacity-[0.03]" 
+                >
             </div>
-            <div className='max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-16 px-4 md:px-8 relative z-10'> 
-                <InViewAnimation delay={0.3} className='flex flex-col justify-start space-y-4 md:space-y-6 pt-16 pb-12 md:pt-4'> 
-                    <>
-                    <div className="mb-4 md:mb-0">
-                        <h3 className='text-xl md:text-2xl font-bold text-foreground'>Speak Directly with an Expert.</h3> {/* Slightly smaller font for mobile h3 */}
-                        <p className='text-foreground/70 mt-1 md:mt-2 text-base md:text-lg'>Prefer to <span className='text-primary'>talk?</span> Here are our details.</p> 
-                    </div>
-                    <div className='space-y-3 md:space-y-4'> 
-                        <a href="mailto:hello@valetrex.com" className='flex items-center gap-3 text-base md:text-lg text-foreground hover:text-primary transition-colors'> 
-                            <Mail className='w-5 h-5 text-chart-4' />
-                            <span>hello@valetrex.com</span>
-                        </a>
-                        <a href="tel:+1234567890" className='flex items-center gap-3 text-base md:text-lg text-foreground hover:text-primary transition-colors'> 
-                            <Phone className='w-5 h-5 text-chart-1' />
-                            <span>+91 9876543210</span>
-                        </a>
-                        <div className='flex items-start gap-3 text-base md:text-lg text-foreground'> 
-                            <MapPin className='w-5 h-5 mt-1 text-chart-2' />
-                            <div>
-                                <p>123 Innovation Drive</p>
-                                <p className='text-foreground/70'>Tech City, TX 12345</p>
-                            </div>
+
+            <div className="container mx-auto px-6 pt-32 pb-24 relative z-10">
+                <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
+
+                    {/* --- LEFT COLUMN: THE PITCH & DETAILS --- */}
+                    <div className="lg:col-span-5 flex flex-col justify-between h-full pt-4">
+                        <div>
+                            <InViewAnimation>
+                                <>
+                                <div className="flex items-center gap-3 mb-6">
+                                    <span className="h-px w-8 bg-blue-600"></span>
+                                    <h3 className="text-xs tracking-widest uppercase font-bold text-blue-600">
+                                        Contact Us
+                                    </h3>
+                                </div>
+                                <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
+                                    Ready to Engineer<br/>
+                                    <span className="text-indigo-600">
+                                         Scale?
+                                    </span>
+                                </h1>
+                                <p className="text-lg text-slate-600 leading-relaxed mb-12">
+                                    We design and develop high-performance web platforms, AI-powered systems, and automation for teams that care about scalability, reliability, and long-term architecture.
+Tell us what you’re building — or what’s currently holding you back.
+                                </p>
+                                </>
+                            </InViewAnimation>
+
+                            <InViewAnimation delay={0.2}>
+                                <div className="space-y-10">
+                                    {/* Email Block */}
+                                    <div className="group">
+                                        <div className="flex items-center gap-3 mb-2">
+                                            <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
+                                                <Mail size={18} />
+                                            </div>
+                                            <h4 className="text-xs font-mono uppercase text-slate-400">New Business</h4>
+                                        </div>
+                                        <a href="mailto:hello@zelphine.com" className="text-xl font-bold text-slate-900 hover:text-blue-600 transition-colors pl-11 block">
+                                            hello@zelphine.com
+                                        </a>
+                                    </div>
+                                    
+                                    {/* Location Block */}
+                                    <div>
+                                        <div className="flex items-center gap-3 mb-2">
+                                             <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
+                                                <MapPin size={18} />
+                                            </div>
+                                            <h4 className="text-xs font-mono uppercase text-slate-400">Headquarters</h4>
+                                        </div>
+                                        <p className="text-base font-medium text-slate-900 pl-11">
+                                            Remote First Agency<br/>
+                                            <span className="text-slate-500 font-normal">Operating Global / EST Timezone</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </InViewAnimation>
                         </div>
+
+                        {/* Trust Signal at Bottom */}
+                        <InViewAnimation delay={0.4}>
+                            <div className="mt-12 pt-8 border-t border-slate-200">
+                                <p className="text-sm text-slate-500 font-medium flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                    Typical response time: <span className="text-slate-900 font-bold">Under 24 Hours</span>
+                                </p>
+                            </div>
+                        </InViewAnimation>
                     </div>
-                    </>
-                </InViewAnimation>
-                <InViewAnimation delay={0.4} className=''>
-                    <ContactForm />
-                </InViewAnimation>
+
+                    {/* --- RIGHT COLUMN: THE FORM WRAPPER --- */}
+                    {/* I created a "Card" style wrapper here. Drop your form component inside. */}
+                    <div className="lg:col-span-7">
+                        <InViewAnimation delay={0.2} className="h-full">
+                            <div className=" rounded-2xl shadow-2xl shadow-blue-900/5 border border-slate-200 p-8 md:p-10 h-full relative overflow-hidden">
+                                {/* Decorative Gradient Blur inside the card */}
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-0 translate-x-1/2 -translate-y-1/2"></div>
+                                
+                                {/* The Form Component */}
+                                <div className="relative z-10">
+                                    <ContactForm />
+                                </div>
+                            </div>
+                        </InViewAnimation>
+                    </div>
+
+                </div>
             </div>
         </div>
     )

@@ -1,28 +1,53 @@
 "use client"
-import { Card, CardContent, CardHeader, CardTitle } from "../ui";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import Link from "next/link";
-export default function BlogCard({
-  title,
-  description,
-  image,
-  slug
+import { SanityDocument } from "next-sanity";
+export default function BlogCard({post,
+i
 }:{
-  title:string,
-  image:string,
-  description:string,
-  slug:string
+  post: SanityDocument, i: number
 }) {
   return (
-      <Card className="w-[87vw] sm:w-xl bg-transparent shadow-foreground/5 hover:shadow-lg transition-shadow duration-300 rounded-2xl shadow-md md:w-[39rem]  hover:bg-zinc-400/5 ">
-        <Link href={`/blogs/${slug}`}>
-        <CardHeader className=" flex flex-row gap-5 md:gap-7 justify-center items-center">
-          <img className="rounded-2xl w-[7rem] sm:w-[10rem] md:w-[17rem] " src={image} alt="blogImage" />
-          <div>
-          <CardTitle className=" break-words whitespace-normal text-lg md:text-2xl font-extrabold text-shadow">{title}</CardTitle>
-          <p className="text-foreground/80 md:text-base text-sm pt-2 break-words whitespace-normal">{description}</p>
-          </div>
-        </CardHeader>
-        </Link>
-      </Card>
+      <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group cursor-pointer flex flex-col h-full"
+            >
+              <Link href={`/insights/${post.slug?.current || post.slug}`} className="flex flex-col h-full">
+                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-slate-100 mb-6">
+                  <Image 
+                    fill
+                    src={post.mainImage?.asset?.url || '/placeholder.png'} 
+                    alt={post.title} 
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Card Content */}
+                <div className="flex flex-col flex-1">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">{post.category}</span>
+                    <span className="text-xs text-slate-400 font-mono">
+                      {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-slate-900 leading-snug mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                    {post.title}
+                  </h3>
+
+                  <p className="text-slate-500 text-sm leading-relaxed line-clamp-2 mb-4">
+                     {post.previewText || "Read about our latest findings in software development and design patterns."}
+                  </p>
+
+                  <div className="mt-auto pt-4 border-t border-slate-100 flex items-center text-xs font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    Read Article <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
   );
 }

@@ -1,8 +1,6 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import InViewAnimation from "../majorUi/inViewAnimation";
 import { Star } from "lucide-react";
 

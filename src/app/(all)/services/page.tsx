@@ -1,4 +1,4 @@
-import Services from '@/components/sections/services'
+
 import { serverUrl } from '@/lib/exportEnv'
 import { Metadata } from 'next'
 import React from 'react'

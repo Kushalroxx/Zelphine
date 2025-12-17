@@ -2,129 +2,127 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Textarea, Loader, AlertDialog, AlertDialogContent, AlertDialogTitle, AlertDialogDescription, AlertDialogHeader, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui"
+import { Button, Form, Loader, AlertDialog, AlertDialogContent, AlertDialogTitle, AlertDialogDescription, AlertDialogHeader, AlertDialogFooter, AlertDialogAction } from "@/components/ui"
 import axios from "axios"
 import { useRouter } from "nextjs-toploader/app"
-
-import { User, Mail, Phone, CheckCircle } from 'lucide-react';
+import { User, Mail, Phone, CheckCircle, Briefcase, MessageSquare } from 'lucide-react';
 import React from "react"
+import RenderField from "./renderField"
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters."
-  }),
-  email: z.string().email({message: "Please enter a valid email."}),
-  phone: z.string().min(5, {
-    message: "Please enter a valid phone number."
-  }),
-  description: z.string().min(10, {
-    message: "Description must be at least 10 characters."
-  }),
+  name: z.string().min(2, { message: "Name is too short." }),
+  email: z.string().email({ message: "Please enter a valid email." }),
+  phone: z.string().min(5, { message: "Please enter a valid phone number." }),
+  projectType: z.string().min(1, { message: "Please select a project type." }),
+  description: z.string().min(10, { message: "Please tell us a bit more about the project." }),
 })
 interface FieldConfig {
-    name: "name" | "email" | "phone" | "description";
+    name: "name" | "email" | "phone" | "projectType" | "description";
     label: string;
     placeholder: string;
-    component: typeof Input | typeof Textarea;
+    type: "input" | "textarea" | "select";
     icon?: React.ElementType; 
+    options?: string[];
 }
 
+
 const fields: FieldConfig[] = [
-    { name: "name", label: "Name", placeholder: "Enter your name", component: Input, icon: User },
-    { name: "email", label: "Email", placeholder: "Enter your email", component: Input, icon: Mail },
-    { name: "phone", label: "Phone Number", placeholder: "Enter your phone number", component: Input, icon: Phone },
-    { name: "description", label: "Description", placeholder: "Tell us about your project", component: Textarea, }
+    { name: "name", label: "Full Name", placeholder: "Jane Doe", type: "input", icon: User },
+    { name: "email", label: "Work Email", placeholder: "jane@company.com", type: "input", icon: Mail },
+    { name: "phone", label: "Phone Number (optional)", placeholder: "+1 (555) 000-0000", type: "input", icon: Phone },
+    { 
+      name: "projectType", 
+      label: "What are you looking to build?", 
+      placeholder: "Select your project type", 
+      type: "select", 
+      icon: Briefcase,
+      options: ["Web Application Development", "AI & Automation", "Product Design (UI/UX)", "Technical Consulting", "Other"]
+    },
+    { name: "description", label: "Describe your challenge", placeholder: " What are you building, scaling, or fixing?\n Mention current tech stack, pain points, or goals if possible.", type: "textarea", icon: MessageSquare }
 ]
 
 export function ContactForm() {
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
-    const router = useRouter()
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-          name: "",
-          email: "",
-          phone: "",
-          description: "",
-        },
-      })
-      const onSubmit= async(data: z.infer<typeof formSchema>)=> {
-        try{
-          setLoading(true)
-            const res = await axios.post(`api/contacts/create`,data)
-            setSuccess(true)
-            form.reset();
-        }catch(error){
-            console.log(error);
-           if (axios.isAxiosError(error)) {
-            form.setError("name", { message: error.response?.data?.error });
-           }
-           form.setError("name", { message: "An error occurred. Please try again." });
-        }finally{
-          setLoading(false)
-        }
-      }
+  
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      projectType: "",
+      description: "",
+    },
+  })
+
+  const onSubmit = async(data: z.infer<typeof formSchema>) => {
+    try {
+      setLoading(true)
+      const res = await axios.post(`api/contacts/create`, data)
+      setSuccess(true)
+      form.reset();
+    } catch(error) {
+       console.log(error);
+       if (axios.isAxiosError(error)) {
+        form.setError("name", { message: error.response?.data?.error });
+       }
+       form.setError("name", { message: "An error occurred. Please try again." });
+    } finally {
+      setLoading(false)
+    }
+  }
       
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 p-6 rounded-2xl bg-card border border-border"> 
-        {
-          fields.map(({name,component:Component,label,placeholder,icon:Icon}) => ( 
-            <FormField
-              key={name}
-              control={form.control}
-              name={name}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-base text-gray-700 font-medium">{label}</FormLabel>
-                  <FormControl>
-                    <div className="relative flex items-center"> 
-                        {Icon && (
-                            <Icon className="absolute left-3 w-5 h-5 text-gray-400" />
-                        )}
-                        <Component 
-                            className={`
-                                text-base w-full h-10 
-                                ${Component === Textarea ? "h-28 pt-3" : "h-10"} // Adjust Textarea padding for icon
-                                shadow-sm border border-gray-300 rounded-md
-                                focus:ring-2 focus:ring-primary focus:border-transparent // Branded focus state
-                                ${Icon ? "pl-10" : "pl-4"} // Add padding if icon exists
-                            `} 
-                            placeholder={placeholder} 
-                            {...field} 
-                        />
-                    </div>
-                  </FormControl>
-                  <FormMessage className="text-sm text-red-500 mt-1" /> 
-                </FormItem>
-              )}
-            />
-          ))
-        }
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6"> 
+        <div className="grid md:grid-cols-2 gap-5">
+            {fields.slice(0, 3).map((field, i) => (
+                <div key={field.name} className={i === 2 ? "md:col-span-2" : ""}>
+                    <RenderField field={field} form={form} />
+                </div>
+            ))}
+        </div>
+
+        <RenderField field={fields[3]} form={form} />
+        <RenderField field={fields[4]} form={form} />
+
         <AlertDialog open={success} onOpenChange={setSuccess}>
-      <AlertDialogContent>
-        <AlertDialogHeader >
-          <AlertDialogTitle className="flex items-center justify-center gap-1 mb-6" >
-            <CheckCircle className="w-6 h-6 text-chart-2" />Inquiry Received!!🎉
-          </AlertDialogTitle>
-          <AlertDialogDescription >
-            Thank you for connecting with <strong>ValetRex!</strong> <br /> <br /> We're thrilled to receive your message.
-            Our team will carefully review your project details and get back to you within 1-2 business days to discuss next steps.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter >
-          <AlertDialogAction 
-            onClick={() => setSuccess(false)}
-          >
-            Awesome!
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-        <Button disabled={loading} className="w-full md:py-6 md:text-base font-semibold" type="submit">
-          {loading ? <Loader className="w-20 h-5 " /> : "Get a Free Consultation"} 
+          <AlertDialogContent className="rounded-2xl">
+            <AlertDialogHeader>
+              <AlertDialogTitle className="flex flex-col items-center justify-center gap-4 mb-4 pt-4">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-8 h-8 text-green-600" />
+                </div>
+                <span className="text-2xl font-bold text-slate-900">Request Received</span>
+              </AlertDialogTitle>
+              <AlertDialogDescription className="text-center text-lg text-slate-600">
+                Thank you for contacting <strong>Zelphine</strong>.<br/> 
+                Our engineering team is reviewing your details. We will respond within 24 hours.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter className="flex justify-center sm:justify-center pb-4">
+              <AlertDialogAction 
+                onClick={() => setSuccess(false)}
+                className="w-full sm:w-auto font-bold !text-white px-8 bg-primary text-slate hover:bg-primary/90 rounded-full"
+              >
+                Close
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
+        <Button 
+            disabled={loading} 
+            className="w-full py-6 text-base font-bold transition-all rounded-xl" 
+            type="submit"
+        >
+          {loading ? <Loader className="w-6 h-6 animate-spin" /> : "Discuss Your Challenge →"} 
         </Button>
+
+        <p className="text-center text-xs text-slate-400 mt-4">
+            Non-disclosure agreement (NDA) available upon request.
+        </p>
       </form>
     </Form>
   )

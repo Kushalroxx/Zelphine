@@ -3,7 +3,7 @@ import { MailOptions } from "nodemailer/lib/json-transport";
 
 // Type definition for Mailer class methods
 interface IMailer {
-    sendContactMail(email: string, name: string, phone: string, description: string): Promise<boolean>;
+    sendContactMail(email: string, name: string, phone: string, description: string, projectType: string): Promise<boolean>;
     sendOtp(email: string, otp: string): Promise<boolean>;
     sendPasswordMail(email: string, token: string): Promise<boolean>;
 }
@@ -50,9 +50,9 @@ class Mailer implements IMailer {
             });
     }
 
-    public async sendContactMail(email: string, name: string, phone: string, description: string): Promise<boolean> {
+    public async sendContactMail(email: string, name: string, phone: string, description: string, projectType: string): Promise<boolean> {
         const mailOptions: MailOptions = {
-            from: `"ValetRex" <${this.appEmail}>`,
+            from: `"ZELPHINE" <${this.appEmail}>`,
             to: this.adminEmail,
             subject: "New contact form submission",
             html: `<!DOCTYPE html>
@@ -93,6 +93,7 @@ class Mailer implements IMailer {
                     <p>Name: ${name}</p>
                     <p>Email: ${email}</p>
                     <p>Phone: ${phone}</p>
+                    <p>Project Type: ${projectType}</p>
                     <p>Description: ${description}</p>
                   </div>
                 </div>

@@ -2,8 +2,6 @@
 import React from 'react'
 import InViewAnimation from '../majorUi/inViewAnimation'
 import { Button, Card, CardDescription, CardHeader } from '../ui'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useRouter } from 'next/navigation'
 
 const settings = {

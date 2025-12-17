@@ -14,8 +14,8 @@ export default function Navbar() {
 
   const navItems = [
     { href: "/#services", label: "SERVICES" },
-    { href: "/#caseStudies", label: "CASE STUDIES" },
-    { href: "/blogs", label: "BLOGS" },
+    { href: "/case-studies", label: "CASE STUDIES" },
+    { href: "/insights", label: "INSIGHTS" },
     { href: "/about", label: "ABOUT" },
     { href: "/contactus", label: "CONTACTS" },
   ];
@@ -44,8 +44,11 @@ export default function Navbar() {
     }`}
 >
   <div className="flex justify-between items-center px-4 md:px-8 p-2 md:py-4">
-    <Link href="/" className="text-2xl md:text-3xl">
-      <span className="font-bold">Valet</span><span className="text-primary font-bold">Rex</span>
+    <Link href="/" className="text-xl md:text-2xl ">
+     <div className="flex items-center h-full">
+       <img src="/assets/logo.png" className="w-8 md:w-10" alt="" />
+      <span className="font-bold text-muted-foreground">ZELPHINE</span>
+     </div>
     </Link>
 
     {/* Desktop Menu */}
@@ -56,7 +59,7 @@ export default function Navbar() {
         />
     </div>
     {/* Hamburger */}
-    <div className="lg:hidden text-3xl mt-1 text-primary">
+    <div className="lg:hidden text-3xl mt-1 text-forground">
       <button onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <MdClose /> : <TiThMenu />}
       </button>

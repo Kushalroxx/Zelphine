@@ -44,15 +44,15 @@ export default function HomeHero() {
           >
             <div id="title" className="max-w-4xl">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.01] text-foreground">
-                You Run Your Business<br />
-                We’ll Run Your <span className="text-primary">Platform</span>
+                Engineering Your Vision<br />
+                with a Product <span className="text-primary">Mindset</span>
               </h1>
             </div>
             <div
               className="mt-8 md:mt-10 max-w-2xl"
             >
               <p className=" lg:text-xl text-muted-foreground">
-                Focus on growth. We handle the engineering—reliable, high-performance, and built to scale. Stress-free, every step of the way.
+                We build high-performance web and AI platforms that last. Get the technical rigor of a product company applied to your custom project, zero friction, total ownership.
               </p>
             </div>
             <div
@@ -61,16 +61,16 @@ export default function HomeHero() {
               <Button
                 onClick={() => router.push("/contactus")}
                 className="h-12 px-8 text-sm md:text-base font-semibold text-primary-foreground  shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105
-                           bg-primary hover:shadow-xl"
+                           bg-gradient-to-br from-indigo-800 to-purple-600 hover:shadow-xl"
               >
                 Request a Quote
               </Button>
               <Button
-                onClick={() => router.push("/services")}
+                onClick={() => router.push("/#services")}
                 className="h-12 px-8 text-sm md:text-base font-semibold bg-card text-card-foreground border border-border shadow-sm
                            hover:bg-muted transform transition-all duration-300 ease-in-out hover:scale-105"
               >
-                See What We Do
+                Explore Solutions
               </Button>
             </div>
           </motion.div>

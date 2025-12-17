@@ -6,8 +6,9 @@ export default function Footer() {
    <div className="border-t border-t-border px-4 md:px-10 py-8 ">
   <div className="flex flex-col gap-8 md:flex-row md:justify-between md:items-start flex-wrap">
     <div className="md:w-1/4 min-w-[200px]">
-       <Link href="/" className="text-2xl md:text-3xl">
-      <span className="font-bold">Valet</span><span className="text-primary font-bold">Rex</span>
+       <Link href="/" className="text-xl md:text-2xl flex items-center">
+       <img src="/assets/logo.png" className='w-8 md:w-10' alt="" />
+      <span className="font-bold text-muted-foreground">ZELPHINE</span>
     </Link>
       <p className="text-sm text-foreground/80">Helping you build fast, user-focused digital products.</p>
     </div>
@@ -56,7 +57,7 @@ export default function Footer() {
 
 
   <div className="mt-8 border-t border-foreground/10 pt-4 text-center text-xs text-foreground/50">
-    © {new Date().getFullYear()} ByteXylon. All rights reserved.
+    © {new Date().getFullYear()} ZELPHINE. All rights reserved.
   </div>
 </div>
 

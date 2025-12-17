@@ -3,25 +3,25 @@ import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "@/lib/sanityClient";
 import DisplayBlog from "@/components/blogs/displayBlog";
-import Image from "next/image";
+
 const POST_QUERY = groq`
   *[_type == "post" && slug.current == $slug][0] {
     _id,
     title,
     publishedAt,
-    image, // This is your MAIN image
+    image, 
+    categories[]->{title, slug},
     body[] {
       _key,
       _type,
       ...,
 
-      // This is the "Can't-Fail" projection
-      // It handles images and provides all data needed
+    
       _type == "image" => {
-        "alt": asset->alt, // Get alt text from the asset
+        "alt": asset->alt,
         "hotspot": hotspot,
         "crop": crop,
-        "asset": asset->{ // "Follow" the reference
+        "asset": asset->{
           _id,
           url,
           "metadata": metadata.dimensions
