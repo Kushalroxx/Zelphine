@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from 'nextjs-toploader';
 import Navbar from "@/components/sections/navbar";
+import ChatWidget from "@/components/chatbot/chatWidget";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -63,6 +64,7 @@ export default function RootLayout({
          <NextTopLoader color="#9D00FF" showSpinner={false} />
          <Navbar/>
         {children}
+        <ChatWidget/>
       </body>
     </html>
   );

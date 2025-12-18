@@ -12,7 +12,7 @@
 
 # testing
 /coverage
-
+vertex-key.json
 # next.js
 /.next/
 /out/
