@@ -7,24 +7,26 @@ import { Button, Input } from '@/components/ui';
 import Link from 'next/link';
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useAtom } from 'jotai';
+import { formAtom } from '@/lib/atoms';
+import { useRouter } from 'nextjs-toploader/app';
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   
   const [messages, setMessages] = useState([
-    { id: 2, role: 'ai', text:`Hey! 👋
-I help people turn ideas or problems into clear solutions — with a rough timeline and budget, no technical talk.
-
-What best describes you right now?`}
+    { id: 2, role: 'ai', text:`**Hello.**
+I am here to help you scope your project requirements. Whether you are planning a new SaaS platform, an internal tool, or an AI integration.
+**Please describe your project idea or the problem you are facing below.**` },
   ]);
-  
+  const [chatFormData, setChatFormData] = useAtom(formAtom);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
-  
+  const router = useRouter(); 
   const handleSend = async(e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
@@ -47,6 +49,15 @@ What best describes you right now?`}
         }),
       })
       const data = await res.json();
+      if(data.data){
+        const reply = JSON.parse(data.data);
+       setChatFormData(reply);
+       console.log(reply);
+       router.push("/contactus");
+       setMessages(prev => [...prev, { id: Date.now() + 1, role: 'ai', text: reply.zelphineAi }]);
+       return;
+      }
+
       setMessages(prev => [...prev, { id: Date.now() + 1, role: 'ai', text: data.message }]);
     } catch (error) {
       setMessages(prev => [...prev, { id: Date.now() + 1, role: 'ai', text: "Sorry, something went wrong. Please try again." }]);

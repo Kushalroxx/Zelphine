@@ -1,0 +1,9 @@
+import { atom } from "jotai";
+
+export const formAtom = atom({
+  name: "",
+  email: "",
+  phone: "",
+  projectType: "",
+  description: "",
+});
