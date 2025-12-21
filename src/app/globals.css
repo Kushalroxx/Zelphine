@@ -220,30 +220,3 @@
 .animate-marquee-vertical {
   animation: marquee-vertical var(--duration) linear infinite;
 }
-.image-container {
-  position: relative;
-  /* Ensure the container has a position other than static */
-  z-index: 1;
-  /* Establish a stacking context */
-}
-
-.image-container::after {
-  content: "";
-  position: absolute;
-  bottom: -10%;
-  /* Adjust vertical position */
-  left: -10%;
-  /* Adjust horizontal position */
-  width: 120%;
-  /* Adjust width of the graphic */
-  height: 120%;
-  /* Adjust height of the graphic */
-  background-image: radial-gradient(circle at bottom left, rgba(138, 43, 226, 0.2) 0%, rgba(138, 43, 226, 0) 60%);
-  /* Purple wave effect */
-  z-index: -1;
-  /* Place it behind the image */
-  pointer-events: none;
-  /* Ensure it doesn't interfere with clicks */
-  transform: rotate(-10deg);
-  /* Optional: rotate for a more dynamic look */
-}
