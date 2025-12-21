@@ -20,7 +20,7 @@ export default function MobileMenu({
         <>
           {/* Overlay */}
           <motion.div
-            className="fixed inset-0 bg-foreground/50 z-40"
+            className="fixed inset-0 bg-foreground/50 z-[50]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -30,7 +30,7 @@ export default function MobileMenu({
 
           {/* Drawer */}
           <motion.div
-            className="fixed top-0 right-0 h-screen w-3/4 sm:w-1/2  bg-background shadow-lg z-50 flex flex-col px-6 pt-3 gap-6"
+            className="fixed top-0 right-0 h-screen w-3/4 sm:w-1/2  bg-background shadow-lg z-[60] flex flex-col px-6 pt-3 gap-6"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}

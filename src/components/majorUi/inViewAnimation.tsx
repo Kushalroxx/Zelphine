@@ -7,7 +7,9 @@ export default function InViewAnimation({
   delay=.2,
   className,
   whileHover,
+  style
 }:{
+  style?:React.CSSProperties,
   children?:React.ReactElement, 
   delay?:number,
   className?:string,
@@ -18,6 +20,7 @@ export default function InViewAnimation({
 
   return (
     <motion.div
+    style={style}
     whileHover={whileHover}
     className={className}
     initial={{ opacity: 0,y:10 }}

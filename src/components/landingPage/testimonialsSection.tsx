@@ -47,15 +47,15 @@ const TestimonialsSection = () => {
 
 
   return (
-    <section className="pt-20">
+    <section className=" pt-16 md:pt-24">
       <InViewAnimation >
         <h2
-          className="text-4xl md:text-5xl text-center font-bold mb-16"
+          className="text-3xl md:text-5xl text-center font-bold mb-16"
         >
          Client Success Stories
         </h2>
       </InViewAnimation>
-      <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeInUp} className="justify-center mx-auto px-4 flex flex-wrap gap-8">
+      <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeInUp} className="justify-center mx-auto px-4 flex flex-wrap gap-4 md:gap-6">
   {testimonials.map((testimonial, index) => (
    <motion.div
   key={index}

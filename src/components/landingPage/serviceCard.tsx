@@ -19,7 +19,7 @@ export default function ServiceCard({
     className='w-full md:h-40'
     transition={{duration:.1,type:"spring",stiffness: 100, damping: 15}}
     >
-    <Card className='py-4 md:py-6 h-32 md:h-36'>
+    <Card className='py-4 md:py-6  md:h-36'>
       <CardHeader className='flex justify-center md:items-start items-center'>
         <div className='text-lg md:text-xl mr-3 mt-2'>
         {

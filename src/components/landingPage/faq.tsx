@@ -86,7 +86,7 @@ const faqData = [
 export default function Faq() {
   return (
     <>
-     <div className="text-center mt-20 mb-16">
+     <div className="text-center mt-20 mb-12 md:mb-16">
       <InViewAnimation >
         <h2 className="text-3xl md:text-4xl font-bold mb-6">Frequently Asked Questions</h2>
         </InViewAnimation>
