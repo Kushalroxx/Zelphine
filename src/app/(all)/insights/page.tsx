@@ -1,9 +1,37 @@
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/lib/sanityClient";
 import AllBlogs from "@/components/blogs/allBlogs";
+import { Metadata } from "next";
 
 const POSTS_PER_PAGE = 12;
 
+export async function generateMetadata({
+  searchParams
+}: {
+  searchParams: Promise<{ category?: string }>
+}): Promise<Metadata> {
+  const { category } = await searchParams;
+  const categoryTitle = category && category !== "all"
+    ? category.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") + " Insights"
+    : "Engineering Insights & Strategy";
+  return {
+    title: `${categoryTitle} | Zelphine`,
+    description: "Deep dives into software architecture, Next.js performance, AI agent workflows, and the business logic behind scalable systems. Read how we think.",
+    openGraph: {
+      title: `${categoryTitle} | Zelphine Insights`,
+      description: "No fluff. Just engineering standards, architectural patterns, and business strategy for modern platforms.",
+      url: "https://zelphine.com/insights",
+      images: [
+        {
+          url: "/og-image.png", 
+          width: 1200,
+          height: 630,
+          alt: "Zelphine Engineering Insights",
+        },
+      ],
+    },
+  };
+}
 const POSTS_QUERY = `{
   "posts": *[
     _type == "post"
@@ -31,7 +59,7 @@ const POSTS_QUERY = `{
   }
 }`;
 
-const options = { next: { revalidate: 0 } };
+const options = { next: { revalidate: 86400 } };
 
 export default async function IndexPage({
   searchParams
