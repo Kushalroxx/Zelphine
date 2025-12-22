@@ -91,11 +91,11 @@ export default function ServiceContainer(
   return (
     <div id='services' className='w-full max-w-7xl mx-auto'>
         <InViewAnimation  >
-      <h1 className='text-foreground text-3xl md:text-5xl text-center font-extrabold mt-32 md:mt-52'>Our Services</h1>
+      <h1 className='text-foreground text-3xl md:text-5xl text-center font-extrabold mt-24 md:mt-36'>Our Services</h1>
       </InViewAnimation>
       <motion.div variants={containerVariants} initial="hidden"  whileInView={"visible"} viewport={{once:true}} className="">
-        <h1 className='text-foreground text-2xl md:text-4xl text-center font-bold mt-28 md:mt-32'>Web Engineering & AI Integration</h1>
-        <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 w-full mx-auto items-center mt-12 justify-center'>
+        <h1 className='text-foreground text-2xl md:text-4xl text-center font-bold mt-16 md:mt-24'>Web Engineering & AI Integration</h1>
+        <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full mx-auto items-center mt-12 md:mt-16 justify-center'>
         {
           webAndAiServices.map((webService, index) => (
             <motion.div className='' key={index} variants={itemVariants}>
@@ -106,8 +106,8 @@ export default function ServiceContainer(
         </div>
       </motion.div>
       <motion.div variants={containerVariants} initial="hidden"  whileInView={"visible"} viewport={{once:true}} className="">
-        <h1 className='text-foreground text-2xl md:text-4xl text-center font-bold mt-32'>Dedicated Staffing</h1>
-        <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 w-full mx-auto items-center mt-12 justify-center'>
+        <h1 className='text-foreground text-2xl md:text-4xl text-center font-bold mt-20 md:mt-32'>Dedicated Staffing</h1>
+        <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full mx-auto items-center mt-12 justify-center'>
         {
           staffingServices.map((webService, index) => (
             <motion.div className='' key={index} variants={itemVariants}>
@@ -118,8 +118,8 @@ export default function ServiceContainer(
         </div>
       </motion.div>
       <motion.div variants={containerVariants} initial="hidden"  whileInView={"visible"} viewport={{once:true}} className="">
-        <h1 className='text-foreground text-2xl md:text-4xl text-center font-bold mt-32'>Maintenance & Platform Support</h1>
-        <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 w-full mx-auto items-center mt-12 justify-center'>
+        <h1 className='text-foreground text-2xl md:text-4xl text-center font-bold mt-20 md:mt-32'>Maintenance & Platform Support</h1>
+        <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full mx-auto items-center mt-12 justify-center'>
         {
           maintenanceServices.map((webService, index) => (
             <motion.div className='' key={index} variants={itemVariants}>

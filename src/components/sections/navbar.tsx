@@ -37,14 +37,14 @@ export default function Navbar() {
   initial={{ opacity: 0, y: -5 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.2, type: "keyframes" }}
-  className={`fixed left-1/2 -translate-x-1/2 z-50 font-archivo !text-foreground transition-all duration-300
+  className={`fixed left-1/2 -translate-x-1/2 z-[60] font-archivo !text-foreground transition-all duration-300
     ${scrolled
       ? "top-4 w-[90%] rounded-full backdrop-blur border border-zinc-900"
       : "top-0 w-full rounded-none bg-background/40 bakdrop-blur border-b border-zinc-900"
     }`}
 >
   <div className="flex justify-between items-center px-4 md:px-8 p-2 md:py-4">
-    <Link href="/" className="text-xl md:text-2xl ">
+    <Link href="/" className="text-lg md:text-2xl ">
      <div className="flex items-center h-full">
        <img src="/assets/logo.png" className="w-8 md:w-10" alt="" />
       <span className="font-bold text-muted-foreground">ZELPHINE</span>
@@ -59,7 +59,7 @@ export default function Navbar() {
         />
     </div>
     {/* Hamburger */}
-    <div className="lg:hidden text-3xl mt-1 text-forground">
+    <div className="lg:hidden text-2xl mt-1 text-forground">
       <button onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <MdClose /> : <TiThMenu />}
       </button>

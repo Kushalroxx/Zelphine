@@ -7,24 +7,26 @@ import { Button, Input } from '@/components/ui';
 import Link from 'next/link';
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useAtom } from 'jotai';
+import { formAtom } from '@/lib/atoms';
+import { useRouter } from 'nextjs-toploader/app';
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   
   const [messages, setMessages] = useState([
-    { id: 2, role: 'ai', text:`Hey! 👋
-I help people turn ideas or problems into clear solutions — with a rough timeline and budget, no technical talk.
-
-What best describes you right now?`}
+    { id: 2, role: 'ai', text:`**Hello.**
+I am here to help you scope your project requirements. Whether you are planning a new SaaS platform, an internal tool, or an AI integration.
+**Please describe your project idea or the problem you are facing below.**` },
   ]);
-  
+  const [chatFormData, setChatFormData] = useAtom(formAtom);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
-  
+  const router = useRouter(); 
   const handleSend = async(e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
@@ -47,6 +49,15 @@ What best describes you right now?`}
         }),
       })
       const data = await res.json();
+      if(data.data){
+        const reply = JSON.parse(data.data);
+       setChatFormData(reply);
+       console.log(reply);
+       router.push("/contactus");
+       setMessages(prev => [...prev, { id: Date.now() + 1, role: 'ai', text: reply.zelphineAi }]);
+       return;
+      }
+
       setMessages(prev => [...prev, { id: Date.now() + 1, role: 'ai', text: data.message }]);
     } catch (error) {
       setMessages(prev => [...prev, { id: Date.now() + 1, role: 'ai', text: "Sorry, something went wrong. Please try again." }]);
@@ -65,14 +76,13 @@ What best describes you right now?`}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-3 pl-4 pr-6 py-4 rounded-full shadow-2xl group border border-border bg-background "
+            className="fixed bottom-2 right-2 md:bottom-6 md:right-6 z-50 flex items-center gap-3 md:pl-4 md:pr-6 md:py-4 p-2 rounded-full shadow-2xl group border border-border bg-background "
           >
             <div className="relative flex items-center justify-center w-8 h-8 rounded-full group-hover:bg-gray-200 transition-colors">
                 <Terminal size={16} className="text-indigo-400 group-hover:text-indigo-600" />
-                {/* Status Dot */}
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-green-500 border-2 border-slate-900 rounded-full animate-pulse"></span>
+                <span className="absolute top-1 right-1 md:-top-1 md:-right-1 w-2.5 h-2.5 bg-green-500 border-2 border-slate-900 rounded-full animate-pulse"></span>
             </div>
-            <div className="flex flex-col items-start">
+            <div className="md:flex flex-col items-start hidden">
                 <span className="text-[10px] font-mono uppercase text-slate-700 leading-none mb-0.5 group-hover:text-indigo-600">AI</span>
                 <span className="text-sm font-bold tracking-wide leading-none">Project Advisor</span>
             </div>

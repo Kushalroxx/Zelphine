@@ -87,8 +87,8 @@ export const BackgroundBeamsWithCollision = ({
       ))}
 
       {children}
-       <motion.div
-                className="absolute top-0 left-0 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-primary/10 blur-2xl filter transform-gpu"
+       {/* <motion.div
+                className="absolute top-0 left-0 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full  bg-chart-3/15 blur-2xl filter transform-gpu"
                 animate={{
                   x: [0, 100, -50, 0],
                   y: [0, -50, 100, 0],
@@ -103,7 +103,7 @@ export const BackgroundBeamsWithCollision = ({
                 }}
               />
               <motion.div
-                className="absolute bottom-0 right-0 h-[300px] w-[300px] md:h-[400px] md:w-[400px] rounded-full bg-chart-3/15 blur-2xl filter transform-gpu"
+                className="absolute bottom-0 right-0 h-[300px] w-[300px] md:h-[400px] md:w-[400px] rounded-full bg-indigo-500/10 blur-2xl filter transform-gpu"
                 animate={{
                   x: [0, -80, 40, 0],
                   y: [0, 60, -100, 0],
@@ -117,7 +117,7 @@ export const BackgroundBeamsWithCollision = ({
                   ease: "easeInOut",
                   delay: 5, 
                 }}
-              />
+              /> */}
       <div
         ref={containerRef}
         className="absolute bottom-0 bg-neutral-100 w-full inset-x-0 pointer-events-none"

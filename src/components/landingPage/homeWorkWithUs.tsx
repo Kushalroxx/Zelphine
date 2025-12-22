@@ -60,18 +60,18 @@ const trustBuilders = [
 export default function HomeWorkWithUs() {
   const router = useRouter()
   return (
-    <div id='caseStudies' className=' pt-20 md:pt-28 px-2'>
+    <div id='caseStudies' className=' pt-16 md:pt-24 px-2'>
       <InViewAnimation className='flex flex-col justify-center items-center'>
         <>
-        <h3 className='text-green-600 bg-green-200/90 py-2 px-4 rounded-full text-xs md:text-sm font-semibold mb-6'>Our Client Pledge</h3>
+        <h3 className='text-green-600 bg-green-200/90 py-2 px-4 rounded-full text-xs md:text-sm font-semibold mb-8 md:mb-12'>Our Client Pledge</h3>
       <h1 className='text-foreground text-3xl md:text-5xl text-center font-extrabold'>Modern Platforms, Built for Growth with <span className="text-primary">AI</span></h1>
         </>
       </InViewAnimation>
       <InViewAnimation  className='flex justify-center items-center' >
-      <p className='text-muted-foreground mt-8 break-words whitespace-normal text-base md:text-lg text-center max-w-5xl'>We engineer high-performance web platforms designed to scale —
+      <p className='text-muted-foreground mt-6 md:mt-8 break-words whitespace-normal text-base md:text-lg text-center max-w-5xl'>We engineer high-performance web platforms designed to scale —
                  with AI integration when it drives real impact.</p>
       </InViewAnimation>
-        <div className="max-w-5xl mx-auto pt-28 mb-3 space-y-16">
+        <div className="max-w-5xl mx-auto pt-16 md:pt-24 mb-3 space-y-12  md:space-y-16">
         {
           trustBuilders && trustBuilders.map((trustBuilder, index) => (
             <InViewAnimation whileHover={{scale: 1.005}} key={index} >

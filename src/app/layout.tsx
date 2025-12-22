@@ -12,42 +12,56 @@ const poppins = Poppins({
   variable: '--font-poppins',  
 });
 export const metadata: Metadata = {
-  title: "ByteXylon",
-  description: "ByteXylon provides top-tier services in app development specifically for web development with unmatched commitment and expertise. Explore our demos, services, blogs, and more.",
+  title: {
+    default: "Zelphine | High-Performance Digital Architecture",
+    template: "%s | Zelphine"
+  },
+  description: "We engineer scalable custom platforms, AI agents, and internal business tools. No templates. No fluff. Just high-leverage software for growing businesses.",
   keywords: [
-    "ByteXylon",
-  "web development agency",
-  "Software development",
-  "Enterprise software",
-  "Web development",
-  "App development",
-  "Tech company",
-  "Custom software solutions",
-  "MVPs",
-  "eCommerce",
-  "Mobile apps",
-  "Web apps",
-  "Product design",
-  "UI/UX design",
-  "Software for startups",
-  "Agile development",
-  "Full-stack development",
-  "Cloud application development",
-  "SaaS development",
-  "Digital product agency",
-  "Tech partner for startups",
-  "Software engineering services",
-  "Cross-platform app development",
-  "Next.js development",
-  "React Native development",
-  "API integrations",
-  "Scalable software architecture",
-  "B2B software solutions",
-  "User-centered design",
-  "Startup software agency",
-  "Mobile-first design",
-  "Digital transformation services"
-]
+    "Custom Software Development",
+    "SaaS Architecture",
+    "AI Automation Agents",
+    "Internal Business Tools",
+    "Next.js Developers",
+    "High-Performance Web Apps",
+    "Zelphine"
+  ],
+  authors: [{ name: "Zelphine Engineering Team" }],
+  creator: "Zelphine",
+  metadataBase: new URL('https://zelphine.com'), 
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://zelphine.com",
+    title: "Zelphine | We Turn Ideas into Shipping Products",
+    description: "Stop using templates. Get a custom platform engineered for growth. We build SaaS, AI Agents, and Internal Tools.",
+    siteName: "Zelphine",
+    images: [
+      {
+        url: "/og-image.png", 
+        width: 1200,
+        height: 630,
+        alt: "Zelphine Digital Architecture",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zelphine | High-Performance Software",
+    description: "Custom SaaS, AI Agents, and Internal Tools. Engineered for scale.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({

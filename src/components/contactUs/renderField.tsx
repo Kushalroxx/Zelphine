@@ -20,7 +20,7 @@ export default function RenderField({ field, form }: { field: FieldConfig, form:
                 </FormLabel>
                 
                 {field.type === "select" ? (
-                     <Select onValueChange={formField.onChange} defaultValue={formField.value}>
+                     <Select value={formField.value} onValueChange={formField.onChange} defaultValue={formField.value}>
                         <FormControl>
                             <div className="relative flex items-center group">
                                 {field.icon && (
