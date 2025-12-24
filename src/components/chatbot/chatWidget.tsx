@@ -16,9 +16,12 @@ export default function ChatWidget() {
   const [isLoading, setIsLoading] = useState(false);
   
   const [messages, setMessages] = useState([
-    { id: 2, role: 'ai', text:`**Hello.**
-I am here to help you scope your project requirements. Whether you are planning a new SaaS platform, an internal tool, or an AI integration.
-**Please describe your project idea or the problem you are facing below.**` },
+  { id: 2, role: 'ai', text:`**Welcome to Zelphine.**
+I’m here to help you turn your idea into a real, scalable digital product.
+Whether it’s a website, SaaS platform, AI solution, or internal tool — our team builds it end-to-end.
+
+**Tell me what you want to build, and I’ll guide you from idea to execution.**` },
+
   ]);
   const [chatFormData, setChatFormData] = useAtom(formAtom);
   const [input, setInput] = useState("");
