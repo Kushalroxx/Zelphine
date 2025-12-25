@@ -9,6 +9,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useAtom } from 'jotai';
 import { formAtom } from '@/lib/atoms';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useRouter } from 'nextjs-toploader/app';
 
 export default function ChatWidget() {
@@ -81,8 +82,13 @@ Whether it’s a website, SaaS platform, AI solution, or internal tool — our t
             onClick={() => setIsOpen(true)}
             className="fixed bottom-2 right-2 md:bottom-6 md:right-6 z-50 flex items-center gap-3 md:pl-4 md:pr-6 md:py-4 p-2 rounded-full shadow-2xl group border border-border bg-background "
           >
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-full group-hover:bg-gray-200 transition-colors">
-                <Terminal size={16} className="text-indigo-400 group-hover:text-indigo-600" />
+            <div className="relative flex items-center justify-center w-8 h-8 rounded-full ">
+                 <DotLottieReact
+              style={{ height: "100%", width: "100%", zIndex: 100 }}
+              src="/assets/support.lottie"
+              loop
+              autoplay
+            />
                 <span className="absolute top-1 right-1 md:-top-1 md:-right-1 w-2.5 h-2.5 bg-green-500 border-2 border-slate-900 rounded-full animate-pulse"></span>
             </div>
             <div className="md:flex flex-col items-start hidden">

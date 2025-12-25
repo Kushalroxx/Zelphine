@@ -64,7 +64,7 @@ const TestimonialsSection = () => {
   transition={{ duration: 0.1, type: "spring", stiffness: 100, damping: 15 }}
   className="w-full md:w-xs"
 >
-  <Card className="md:h-[540px] flex flex-col justify-between md:p-5 md:pt-8">
+  <Card className="md:h-[450px] flex flex-col justify-betwe md:p-5 md:pt-8">
     <CardHeader className="flex flex-col gap-4">
       <div className="flex items-center gap-0.5">
         {Array.from({ length: 5 }).map((_, i) => (
@@ -87,7 +87,7 @@ const TestimonialsSection = () => {
         "{testimonial.text}"
       </p>
     </CardContent>
-    <CardFooter className="border-t border-border mx-6 md:mx-0 pt-4">
+    {/* <CardFooter className="border-t border-border mx-6 md:mx-0 pt-4">
       <div className="flex flex-col">
         <p className="font-semibold text-sm text-primary">
           {testimonial.name}
@@ -96,7 +96,7 @@ const TestimonialsSection = () => {
           {testimonial.jobTitle}, {testimonial.company}
         </p>
       </div>
-    </CardFooter>
+    </CardFooter> */}
     
   </Card>
 </motion.div>
