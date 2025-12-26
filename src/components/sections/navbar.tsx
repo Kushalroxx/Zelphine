@@ -59,7 +59,7 @@ export default function Navbar() {
         />
     </div>
     {/* Hamburger */}
-    <div className="lg:hidden text-2xl mt-1 text-forground">
+    <div className="lg:hidden text-2xl mt-1 text-muted-foreground">
       <button onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <MdClose /> : <TiThMenu />}
       </button>

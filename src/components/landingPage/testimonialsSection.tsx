@@ -1,110 +1,109 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui";
 import InViewAnimation from "../majorUi/inViewAnimation";
-import { Star } from "lucide-react";
+import { ShieldCheck, FileCode, Users, ArrowRight } from "lucide-react";
+import { Button } from "../ui/button"; // Assuming you have a button component
+import Link from "next/link";
 
-const TestimonialsSection = () => {
-  const testimonials = [
-  {
-    name: "Rohit Verma",
-    jobTitle: "CTO",
-    company: "SaaS Co.", 
-    stars: 5, 
-    title: "SaaS Revamp Delivered Beyond Expectations",
-    text: "We approached their team for a complete revamp of our SaaS dashboard. They understood our vision perfectly and delivered a fast, scalable, and elegant solution. Totally dependable!",
-  },
-  {
-    name: "Sneha Kapoor",
-    jobTitle: "Marketing Director", 
-    company: "Launchify",
-    stars: 5, 
-    title: "Game-Changing Website for Our Marketing Launch",
-    text: "Their attention to branding and detail helped us create a site that made our product launch 10x more impactful. They didn’t just deliver a site, they delivered conversions.",
-  },
-  {
-    name: "Nikhil Sharma",
-    jobTitle: "Founder",
-    company: "TechScale", 
-    stars: 4, 
-    title: "Reliable Partner for Scalable Web Solutions",
-    text: "What stood out was their ability to take ownership. From day one, it felt like they were part of our internal team. Fast, professional, and technically sound.",
-  },
-];
+const StandardsSection = () => {
+  const commitments = [
+    {
+      title: "30-Day Bug Warranty",
+      icon: <ShieldCheck className="w-6 h-6 text-emerald-500" />,
+      color: "border-t-emerald-500",
+      text: "We stand by our code. Any bug found within 30 days of launch is fixed for free, with immediate priority. Zero hidden fees.",
+    },
+    {
+      title: "Hire-Ready Docs",
+      icon: <FileCode className="w-6 h-6 text-indigo-500" />,
+      color: "border-t-indigo-500",
+      text: "No code dumps. You get full technical documentation and setup guides. Any new developer can pick up the project in under 24 hours.",
+    },
+    {
+      title: "The 'No-Junior' Promise",
+      icon: <Users className="w-6 h-6 text-orange-500" />,
+      color: "border-t-orange-500",
+      text: "No interns learning on your dime. Your project is built strictly by Lead Engineers. Direct access to the builder, not a middleman.",
+    },
+  ];
+
   const fadeInUp: Variants = {
-    hidden: { opacity: 0},
-    visible: { opacity:1,
-      transition:{
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.1
-      }
+        delayChildren: 0.1,
+      },
     },
   };
   const child = {
-    hidden: { opacity: 0, y: 20},
-    visible: { opacity:1, y: 0},
-  }
-
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
-    <section className=" pt-16 md:pt-24">
-      <InViewAnimation >
-        <h2
-          className="text-3xl md:text-5xl text-center font-bold mb-16"
-        >
-         Client Success Stories
-        </h2>
+    <section className="pt-16 md:pt-24 pb-16 ">
+      <InViewAnimation>
+        <div className="text-center mb-12 px-4">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            <span className="text-primary">Standards</span> We Don’t Compromise On
+          </h2>
+          <p className="text-muted-foreground text-sm md:text-lg max-w-xl mx-auto">
+            Discipline, clear ownership, and zero shortcuts. We operate like a product team, not a vendor.
+          </p>
+        </div>
       </InViewAnimation>
-      <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeInUp} className="justify-center mx-auto px-4 flex flex-wrap gap-4 md:gap-6">
-  {testimonials.map((testimonial, index) => (
-   <motion.div
-  key={index}
-  variants={child}
-  whileHover={{ scale: 1.005, y: -2 }}
-  transition={{ duration: 0.1, type: "spring", stiffness: 100, damping: 15 }}
-  className="w-full md:w-xs"
->
-  <Card className="md:h-[450px] flex flex-col justify-betwe md:p-5 md:pt-8">
-    <CardHeader className="flex flex-col gap-4">
-      <div className="flex items-center gap-0.5">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star
-            key={i}
-            className={`h-5 w-5 ${
-              i < testimonial.stars
-                ? "text-yellow-400 fill-yellow-400"
-                : "text-gray-300"
-            }`}
-          />
-        ))}
-      </div>
-      <CardTitle className="text-lg md:text-xl font-semibold text-shadow">
-        {testimonial.title}
-      </CardTitle>
-    </CardHeader>
-    <CardContent>
-      <p className="text-muted-foreground text-sm md:text-lg break-words whitespace-normal">
-        "{testimonial.text}"
-      </p>
-    </CardContent>
-    {/* <CardFooter className="border-t border-border mx-6 md:mx-0 pt-4">
-      <div className="flex flex-col">
-        <p className="font-semibold text-sm text-primary">
-          {testimonial.name}
-        </p>
-        <p className="text-muted-foreground text-sm">
-          {testimonial.jobTitle}, {testimonial.company}
-        </p>
-      </div>
-    </CardFooter> */}
-    
-  </Card>
-</motion.div>
-  ))}
-</motion.div>
 
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+        className="justify-center mx-auto px-4 flex flex-wrap gap-4 md:gap-6 mb-12"
+      >
+        {commitments.map((item, index) => (
+          <motion.div
+            key={index}
+            variants={child}
+            whileHover={{ scale: 1.02, y: -5 }}
+            transition={{ type: "spring", stiffness: 100, damping: 15 }}
+            className="w-full md:w-[350px]"
+          >
+            <Card className={`h-full flex flex-col border-t-4 ${item.color} shadow-sm hover:shadow-xl transition-shadow bg-white`}>
+              <CardHeader className="flex flex-col gap-4 pb-2">
+                <div className="p-3 w-fit rounded-lg bg-neutral-50 shadow-sm border border-neutral-100">
+                  {item.icon}
+                </div>
+                <CardTitle className="text-xl font-bold text-foreground">
+                  {item.title}
+                </CardTitle>
+              </CardHeader>
+
+              <CardContent>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {item.text}
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* NEW CTA SECTION */}
+      <InViewAnimation>
+        <div className="text-center">
+          <Button asChild className="group rounded-full !px-6 font-semibold">
+             <Link href="/contact" className="flex items-center gap-2">
+                Verify Our Standards
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+             </Link>
+          </Button>
+        </div>
+      </InViewAnimation>
     </section>
   );
 };
 
-export default TestimonialsSection;
+export default StandardsSection;

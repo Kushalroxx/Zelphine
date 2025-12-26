@@ -75,38 +75,48 @@ Whether it’s a website, SaaS platform, AI solution, or internal tool — our t
     <>
       <AnimatePresence>
         {!isOpen && (
-          <motion.button
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            onClick={() => setIsOpen(true)}
-            className="fixed bottom-2 right-2 md:bottom-6 md:right-6 z-50 flex items-center gap-3 md:pl-4 md:pr-6 md:py-4 p-2 rounded-full shadow-2xl group border border-border bg-background "
-          >
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-full ">
-                 <DotLottieReact
-              style={{ height: "100%", width: "100%", zIndex: 100 }}
-              src="/assets/support.lottie"
-              loop
-              autoplay
-            />
-                <span className="absolute top-1 right-1 md:-top-1 md:-right-1 w-2.5 h-2.5 bg-green-500 border-2 border-slate-900 rounded-full animate-pulse"></span>
-            </div>
-            <div className="md:flex flex-col items-start hidden">
-                <span className="text-[10px] font-mono uppercase text-slate-700 leading-none mb-0.5 group-hover:text-indigo-600">AI</span>
-                <span className="text-sm font-bold tracking-wide leading-none">Project Advisor</span>
-            </div>
-          </motion.button>
+         <motion.button
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => setIsOpen(true)}
+      className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex items-center gap-3 p-3 md:px-5 md:py-3 rounded-full shadow-2xl bg-white border border-slate-200 group hover:border-indigo-500 hover:shadow-indigo-500/20 transition-all duration-300"
+    >
+      <div className="relative flex items-center justify-center w-8 h-8 md:w-12 md:h-10">
+        <DotLottieReact
+          src="/assets/support.lottie"
+          loop
+          autoplay
+          style={{ width: "100%", height: "100%" }}
+        />
+        
+        {/* Status Dot (Positioned on the icon) */}
+        <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-black rounded-full animate-pulse shadow-sm"></span>
+      </div>
+
+      {/* Text Container (Hidden on Mobile, Visible on Desktop) */}
+      <div className="hidden md:flex flex-col items-start text-left">
+        <span className="text-[10px] font-mono font-bold uppercase text-slate-500 leading-none mb-0.5 group-hover:text-indigo-600 transition-colors">
+          Online
+        </span>
+        <span className="text-sm font-bold text-slate-900 leading-none">
+          AI Advisor
+        </span>
+      </div>
+
+    </motion.button>
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
+<AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ y: 20, opacity: 0, scale: 0.95 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 20, opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed z-50 flex flex-col bg-white shadow-2xl overflow-hidden
+            className="fixed z-[100] flex flex-col bg-white shadow-2xl overflow-hidden
               /* Mobile: Full Screen */
               inset-0 md:inset-auto md:bottom-6 md:right-6 
               /* Desktop: Fixed Dimensions */

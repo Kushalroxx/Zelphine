@@ -11,6 +11,7 @@ import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-w
 import InViewAnimation from '../majorUi/inViewAnimation'
 import {BorderBeam} from "@/components/ui/border-beam"
 import { motion } from 'framer-motion'
+import ProcessSection from './processSection'
 
 export default function LandingPage() {
   return (
@@ -51,6 +52,7 @@ export default function LandingPage() {
       <div className='px-4 md:px-10 space-y-16 md:space-y-24'>
       <HomeWorkWithUs/>
       <ServiceContainer />
+      <ProcessSection/>
       <div className='mt-20'>
         <TestimonialsSection/>
       </div>
