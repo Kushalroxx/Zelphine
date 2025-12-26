@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import {z} from "zod"
 import axios, { AxiosError } from 'axios'
 import { useRouter } from 'nextjs-toploader/app'
-import { DotLoader } from 'react-spinners'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { Button, Card, CardContent, CardHeader, CardTitle, Input } from '../ui'
 
@@ -102,7 +101,7 @@ function SignIn() {
       {error && <p className="text-red-500 text-sm">{error}</p>}
 
       <Button disabled={loading} onClick={onSubmit} type="submit">
-        {loading ? <DotLoader size={20} className="text-primary" /> : "Sign In"}
+        {/* {loading ? <DotLoader size={20} className="text-primary" /> : "Sign In"} */}
       </Button>
     </CardContent>
   </form> 

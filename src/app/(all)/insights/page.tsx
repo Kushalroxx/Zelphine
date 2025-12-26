@@ -88,7 +88,7 @@ export default async function IndexPage({
     options
   );
 
-  let allCatagories: {title: string, slug: string}[] = [{title: "All", slug: ""}];
+  const allCatagories: {title: string, slug: string}[] = [{title: "All", slug: ""}];
  categories.forEach(cat =>{
     if (cat.title && cat.slug) {
       allCatagories.push({title: cat.title, slug: cat.slug.current || cat.slug});
