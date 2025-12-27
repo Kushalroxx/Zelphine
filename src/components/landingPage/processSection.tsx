@@ -133,7 +133,7 @@ export default function ProcessGrid() {
              <h3 className= " text-xl md:text-2xl font-bold mb-2">Ready to Initialize?</h3>
              <p className="text-indigo-100 mb-6 text-sm">Stop guessing. Start building.</p>
              <button 
-               onClick={() => router.push('/contact')}
+               onClick={() => router.push('/contactus')}
                className="bg-white text-xs md:text-sm text-indigo-600 px-8 py-3 rounded-lg font-bold hover:bg-neutral-100 transition-all hover:scale-105 active:scale-95"
              >
                Start Your Build →

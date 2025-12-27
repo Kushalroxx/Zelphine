@@ -17,16 +17,15 @@ export default function Footer() {
       <div>
         <h2 className="font-semibold mb-2">Address</h2>
         <ul className="space-y-1 text-sm text-foreground/80">
-          <li>Diamond Harbour, WB</li>
-          <li> 700001, South 24 pgs</li>
+          <li>West Bengal, India</li>
         </ul>
       </div>
 
       <div>
         <h2 className="font-semibold mb-2">Contact</h2>
         <ul className="space-y-1 text-sm text-foreground/80">
-          <li>Phone: +91 9999999999</li>
-          <li>Email: 0ZVcR@example.com</li>
+         
+          <li>support@zelphine.com</li>
         </ul>
       </div>
 
@@ -45,11 +44,11 @@ export default function Footer() {
         <h2 className="font-semibold mb-2">Company</h2>
         <ul className="space-y-1 text-sm text-foreground/80">
           <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/about"}>About</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/blogs"}>Blog</Link></li>
+          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/insights"}>Insights</Link></li>
           <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/contactus"}>Contact Us</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/demos"}>Demos</Link></li>
+          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/case-studies"}>Case Studies</Link></li>
           <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/"}>Home</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/services"}>Services</Link></li>
+          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/#services"}>Services</Link></li>
         </ul>
       </div>
     </div>

@@ -49,7 +49,7 @@ Tell us what you’re building — or what’s currently holding you back.
                                             <h4 className="text-xs font-mono uppercase text-slate-400">New Business</h4>
                                         </div>
                                         <a href="mailto:hello@zelphine.com" className="text-xl font-bold text-slate-900 hover:text-blue-600 transition-colors pl-11 block">
-                                            hello@zelphine.com
+                                            support@zelphine.com
                                         </a>
                                     </div>
                                     

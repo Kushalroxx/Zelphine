@@ -95,7 +95,7 @@ const StandardsSection = () => {
       <InViewAnimation>
         <div className="text-center">
           <Button asChild className="group rounded-full !px-6 font-semibold">
-             <Link href="/contact" className="flex items-center gap-2">
+             <Link href="/contactus" className="flex items-center gap-2">
                 Verify Our Standards
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
              </Link>

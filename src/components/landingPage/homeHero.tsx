@@ -65,7 +65,7 @@ export default function HomeHero() {
                 Talk to an Engineer
               </Button>
               <Button
-                onClick={() => router.push("/#services")}
+                onClick={() => router.push("/case-studies")}
                 className="h-12 px-8 text-xs md:text-base font-semibold bg-card text-card-foreground border border-border/50 sm:border-border shadow-sm
                            hover:bg-muted transform transition-all duration-300 ease-in-out hover:scale-105"
               >

@@ -13,6 +13,7 @@ model CustomerContacts{
   email     String
   phone     String?
   projectType String
+  isDiscussed Boolean   @default(false)
   description   String
   createdAt DateTime @default(now())
 }
