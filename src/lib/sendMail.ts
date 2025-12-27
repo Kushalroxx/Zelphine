@@ -18,7 +18,11 @@ class Mailer implements IMailer {
     private constructor() {
         if (!process.env.APP_EMAIL || !process.env.APP_PASS || !process.env.ADMIN_USER_EMAIL || !process.env.CLIENT_URL) {
             console.error("Missing required environment variables for Mailer. Please check .env file.");
-            throw new Error("Mailer: Missing environment variables.");
+            this.appEmail = "";
+            this.adminEmail = "";
+            this.clientUrl = "";
+            this.transporter = nodemailer.createTransport({} as any);
+            return;
         }
 
         this.appEmail = process.env.APP_EMAIL;

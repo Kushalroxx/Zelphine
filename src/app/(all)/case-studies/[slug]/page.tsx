@@ -6,11 +6,7 @@ import DisplayCaseStudies from "@/components/caseStudies/displayCaseStudies";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-const { projectId, dataset } = client.config();
-const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
+
 
 const POST_QUERY = groq`
   *[_type == "post" && slug.current == $slug][0] {
@@ -43,7 +39,11 @@ export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
   const { slug } = await params;
-
+const { projectId, dataset } = client.config();
+const urlFor = (source: SanityImageSource) =>
+  projectId && dataset
+    ? imageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
   const post = await client.fetch<SanityDocument>(POST_QUERY, { slug }, options);
 
   if (!post) {
@@ -88,6 +88,11 @@ export default async function page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+const { projectId, dataset } = client.config();
+const urlFor = (source: SanityImageSource) =>
+  projectId && dataset
+    ? imageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
   const post = await client.fetch<SanityDocument>(POST_QUERY, { slug }, options);
   
   if (!post) {
