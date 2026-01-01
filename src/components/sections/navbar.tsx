@@ -7,6 +7,8 @@ import { MdClose } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import DesktopMenu from "../navbar/desktopMenu";
 import MobileMenu from "../navbar/mobileMenu";
+import Image from "next/image";
+import logoImg from "../../../public/assets/logo.png";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -34,6 +36,7 @@ export default function Navbar() {
   return (
     <>
    <motion.nav
+   aria-label="Main Navigation"
   initial={{ opacity: 0, y: -5 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.2, type: "keyframes" }}
@@ -46,7 +49,7 @@ export default function Navbar() {
   <div className="flex justify-between items-center px-4 md:px-8 p-2 md:py-4">
     <Link href="/" className="text-lg md:text-2xl ">
      <div className="flex items-center h-full">
-       <img src="/assets/logo.png" className="w-8 md:w-10" alt="" />
+       <Image src={logoImg} className="w-8 md:w-10 h-8 md:h-10" alt="Zelphine Logo" />
       <span className="font-bold text-muted-foreground">ZELPHINE</span>
      </div>
     </Link>

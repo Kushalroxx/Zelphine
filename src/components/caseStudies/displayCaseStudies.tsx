@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import InViewAnimation from '../majorUi/inViewAnimation';
 import Image from 'next/image';
+import logo from '../../../public/assets/logo.png';
 
 export default function DisplayCaseStudies({ 
   post, 
@@ -87,7 +88,7 @@ export default function DisplayCaseStudies({
             <div className="flex flex-wrap items-center gap-6 text-sm text-slate-500 border-y border-slate-100 py-6">
                 <div className="flex items-center gap-3 pr-6 border-r border-slate-100">
                    <div className="w-8 h-8 rounded flex items-center justify-center">
-                         <img src="/assets/logo.png" className='w-7' alt="Zelphine Logo" />
+                         <Image src={logo} className='w-7' alt="Zelphine Logo" />
                    </div>
                     <div className="flex flex-col">
                         <span className="text-[10px] font-mono uppercase text-slate-400 leading-none mb-1">Engineered By</span>

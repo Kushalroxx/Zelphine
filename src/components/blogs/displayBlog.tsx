@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import InViewAnimation from '../majorUi/inViewAnimation';
 import Image from 'next/image';
+import logo from '../../../public/assets/logo.png';
 
 export default function DisplayBlog({ 
   post, 
@@ -83,7 +84,7 @@ export default function DisplayBlog({
             
             <div className="flex items-center gap-4 text-sm text-gray-500 border-b border-gray-100 pb-8">
                 <div className="flex items-center gap-2">
-                   <img src="/assets/logo.png" className='w-6' alt="Zelphine Logo" />
+                   <Image src={logo} className='w-6' alt="Zelphine Logo" />
                     <span className="font-medium text-gray-900">Zelphine Team</span>
                 </div>
                 <span>•</span>

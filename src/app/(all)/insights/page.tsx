@@ -51,8 +51,9 @@ const POSTS_QUERY = `{
     _type == "post"
     && defined(slug.current)
     && ($category == null || $category in categories[]->slug.current)
+    && !("Case Study" in categories[]->title)
   ]),
-  "categories": *[_type == "category"] {
+  "categories": *[_type == "category" && title != "Case Study"] {
     _id,
     title,
     slug

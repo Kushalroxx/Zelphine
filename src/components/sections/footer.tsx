@@ -1,5 +1,7 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import logoImg from '../../../public/assets/logo.png'
 
 export default function Footer() {
   return (
@@ -7,7 +9,7 @@ export default function Footer() {
   <div className="flex flex-col gap-8 md:flex-row md:justify-between md:items-start flex-wrap">
     <div className="md:w-1/4 min-w-[200px]">
        <Link href="/" className="text-xl md:text-2xl flex items-center">
-       <img src="/assets/logo.png" className='w-8 md:w-10' alt="" />
+       <Image src={logoImg} className="w-8 md:w-10 h-8 md:h-10" alt="Zelphine Logo" />
       <span className="font-bold text-muted-foreground">ZELPHINE</span>
     </Link>
       <p className="text-sm text-foreground/80">Helping you build fast, user-focused digital products.</p>
@@ -25,30 +27,30 @@ export default function Footer() {
         <h2 className="font-semibold mb-2">Contact</h2>
         <ul className="space-y-1 text-sm text-foreground/80">
          
-          <li>support@zelphine.com</li>
+          <li><Link rel="stylesheet" href="mailto:support@zelphine.com" >support@zelphine.com</Link></li>
         </ul>
       </div>
 
       <div>
         <h2 className="font-semibold mb-2">Social</h2>
         <ul className="space-y-1 text-sm text-foreground/80">
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/#"}>Instagram</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/#"}>Facebook</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/#"}>Twitter</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/#"}>LinkedIn</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/#"}>YouTube</Link></li>
+          {/* <li><Link className='hover:underline hover:text-purple-700 text-purple-600 ' href={"/#"}>Instagram</Link></li> */}
+          {/* <li><Link className='hover:underline hover:text-purple-700 text-purple-600 ' href={"/#"}>Facebook</Link></li> */}
+          <li><Link className='hover:underline hover:text-purple-700 text-purple-600 ' href={"https://x.com/zelphinetech"}>Twitter</Link></li>
+          <li><Link className='hover:underline hover:text-purple-700 text-purple-600 ' href={"https://www.linkedin.com/company/zelphine"}>LinkedIn</Link></li>
+          <li><Link className='hover:underline hover:text-purple-700 text-purple-600 ' href={"https://github.com/orgs/Zelphine-Tech"}>GitHub</Link></li>
         </ul>
       </div>
 
       <div>
         <h2 className="font-semibold mb-2">Company</h2>
         <ul className="space-y-1 text-sm text-foreground/80">
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/about"}>About</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/insights"}>Insights</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/contactus"}>Contact Us</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/case-studies"}>Case Studies</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/"}>Home</Link></li>
-          <li><Link className='hover:underline hover:text-blue-600 active:text-blue-600' href={"/#services"}>Services</Link></li>
+          <li><Link className='hover:underline hover:text-purple-700 text-purple-600 ' href={"/about"}>About</Link></li>
+          <li><Link className='hover:underline hover:text-purple-700 text-purple-600 ' href={"/insights"}>Insights</Link></li>
+          <li><Link className='hover:underline hover:text-purple-700 text-purple-600 ' href={"/contactus"}>Contact Us</Link></li>
+          <li><Link className='hover:underline hover:text-purple-700 text-purple-600 ' href={"/case-studies"}>Case Studies</Link></li>
+          <li><Link className='hover:underline hover:text-purple-700 text-purple-600 ' href={"/"}>Home</Link></li>
+          <li><Link className='hover:underline hover:text-purple-700 text-purple-600 ' href={"/#services"}>Services</Link></li>
         </ul>
       </div>
     </div>

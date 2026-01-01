@@ -12,6 +12,8 @@ import InViewAnimation from '../majorUi/inViewAnimation'
 import {BorderBeam} from "@/components/ui/border-beam"
 import { motion } from 'framer-motion'
 import ProcessSection from './processSection'
+import Image from 'next/image'
+import heroImage from '../../../public/assets/heroImage.png'
 
 export default function LandingPage() {
   return (
@@ -30,7 +32,7 @@ export default function LandingPage() {
           <div className="relative w-[95%] md:w-[70%] lg:w-[70%] max-w-5xl aspect-video bg-card rounded-md shadow-2xl border border-border/50 overflow-hidden">
         <BorderBeam
         size={150}
-        borderWidth={2}
+        borderWidth={3}
         initialOffset={20}
         className="from-transparent via-yellow-500 to-transparent"
         transition={{
@@ -39,9 +41,9 @@ export default function LandingPage() {
           damping: 20,
         }}
         />
-      <img 
+      <Image 
         className='w-full h-full object-cover object-top' 
-        src="/assets/heroImage.png" 
+        src={heroImage} 
         alt="Zelphine Digital Architecture" 
         />
 </div>

@@ -14,7 +14,7 @@
   const formSchema = z.object({
     name: z.string().min(2, { message: "Name is too short." }),
     email: z.string().email({ message: "Please enter a valid email." }),
-    phone: z.string().min(5, { message: "Please enter a valid phone number." }).optional(),
+    phone: z.string().min(5, { message: "Please enter a valid phone number." }).or(z.literal("")),
     projectType: z.string().min(1, { message: "Please select a project type." }),
     description: z.string().min(10, { message: "Please tell us a bit more about the project." }),
   })

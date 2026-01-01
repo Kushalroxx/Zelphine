@@ -56,7 +56,7 @@ Whether it’s a website, SaaS platform, AI solution, or internal tool — our t
       if(data.data){
         const reply = JSON.parse(data.data);
        setChatFormData(reply);
-       console.log(reply);
+       setIsOpen(false)
        router.push("/contactus");
        setMessages(prev => [...prev, { id: Date.now() + 1, role: 'ai', text: reply.zelphineAi }]);
        return;
