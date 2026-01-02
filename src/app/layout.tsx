@@ -18,17 +18,31 @@ export const metadata: Metadata = {
   },
   description: "We engineer scalable custom platforms, AI agents, and internal business tools. No templates. No fluff. Just high-leverage software for growing businesses.",
   keywords: [
-    "Custom Software Development",
-    "SaaS Architecture",
-    "AI Automation Agents",
-    "Internal Business Tools",
-    "Next.js Developers",
-    "High-Performance Web Apps",
-    "Zelphine"
-  ],
+  "Custom SaaS Development",
+  "Custom Software Engineering Agency",
+  "Next.js 15 Migration Services",
+  "Sanity Headless CMS Developers",
+  "Vercel Enterprise Solutions",
+  "SaaS Performance Optimization",
+  "Legacy System Modernization",
+  "Internal Tool Development",
+  "Custom AI Agent Integration",
+  "Zelphine Engineering",
+  "Zelphine"
+],
   authors: [{ name: "Zelphine Engineering Team" }],
   creator: "Zelphine",
   metadataBase: new URL('https://zelphine.com'), 
+ icons: {
+  icon: [
+    { url: '/favicon.ico' },
+    { url: '/assets/icon.png', type: 'image/png' }, 
+  ],
+  shortcut: '/favicon.ico',
+  apple: [
+    { url: '/assets/icon.png' }, 
+  ],
+},
   openGraph: {
     type: "website",
     locale: "en_US",

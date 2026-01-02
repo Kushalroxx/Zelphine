@@ -7,14 +7,13 @@ import { Mail, MapPin } from 'lucide-react'
 export default function Contact() {
     return (
         <div className='min-h-screen relative overflow-hidden selection:bg-blue-100 selection:text-blue-900'>
-            <div className="absolute inset-0 z-0 opacity-[0.03]" 
-                >
-            </div>
+            <div className="absolute inset-0 z-0 opacity-[0.03]"></div>
 
-            <div className="container mx-auto px-6 pt-32 pb-24 relative z-10">
-                <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
+            {/* FIX 1: Reduced padding from px-6 to px-4 on mobile to give content more room */}
+            <div className="container mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-12 md:pb-24 relative z-10">
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-24">
 
-                    {/* --- LEFT COLUMN: THE PITCH & DETAILS --- */}
+                    {/* --- LEFT COLUMN --- */}
                     <div className="lg:col-span-5 flex flex-col justify-between h-full pt-4">
                         <div>
                             <InViewAnimation>
@@ -25,15 +24,16 @@ export default function Contact() {
                                         Contact Us
                                     </h3>
                                 </div>
-                                <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
+                                {/* FIX 2: Reduced text-5xl to text-4xl on mobile. 
+                                    Large words like "Engineering" cause overflow if font is too big. */}
+                                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
                                     Ready to Engineer<br/>
                                     <span className="text-indigo-600">
                                          Scale?
                                     </span>
                                 </h1>
                                 <p className="text-lg text-slate-600 leading-relaxed mb-12">
-                                    We design and develop high-performance web platforms, AI-powered systems, and automation for teams that care about scalability, reliability, and long-term architecture.
-Tell us what you’re building — or what’s currently holding you back.
+                                    We design and develop high-performance web platforms, AI-powered systems, and automation for teams that care about scalability.
                                 </p>
                                 </>
                             </InViewAnimation>
@@ -48,7 +48,8 @@ Tell us what you’re building — or what’s currently holding you back.
                                             </div>
                                             <h4 className="text-xs font-mono uppercase text-slate-400">New Business</h4>
                                         </div>
-                                        <a href="mailto:hello@zelphine.com" className="text-xl font-bold text-slate-900 hover:text-blue-600 transition-colors pl-11 block">
+                                        {/* Added break-all to ensure long emails don't overflow */}
+                                        <a href="mailto:hello@zelphine.com" className="text-xl font-bold text-slate-900 hover:text-blue-600 transition-colors pl-11 block break-all">
                                             support@zelphine.com
                                         </a>
                                     </div>
@@ -70,7 +71,7 @@ Tell us what you’re building — or what’s currently holding you back.
                             </InViewAnimation>
                         </div>
 
-                        {/* Trust Signal at Bottom */}
+                        {/* Trust Signal */}
                         <InViewAnimation delay={0.4}>
                             <div className="mt-12 pt-8 border-t border-slate-200">
                                 <p className="text-sm text-slate-500 font-medium flex items-center gap-2">
@@ -82,14 +83,13 @@ Tell us what you’re building — or what’s currently holding you back.
                     </div>
 
                     {/* --- RIGHT COLUMN: THE FORM WRAPPER --- */}
-                    {/* I created a "Card" style wrapper here. Drop your form component inside. */}
                     <div className="lg:col-span-7">
                         <InViewAnimation delay={0.2} className="h-full">
-                            <div className=" rounded-2xl shadow-2xl shadow-blue-900/5 border border-slate-200 p-8 md:p-10 h-full relative overflow-hidden">
-                                {/* Decorative Gradient Blur inside the card */}
+                            {/* FIX 3: Changed p-8 (32px) to p-5 (20px) on mobile.
+                                Before: 32px padding left/right left no room for the form inputs. */}
+                            <div className="rounded-2xl shadow-2xl shadow-blue-900/5 border border-slate-200 p-5 md:p-10 h-full relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-0 translate-x-1/2 -translate-y-1/2"></div>
                                 
-                                {/* The Form Component */}
                                 <div className="relative z-10">
                                     <ContactForm />
                                 </div>

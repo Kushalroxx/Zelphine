@@ -1,4 +1,6 @@
-import { FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea } from "../ui";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea } from "@/components/ui"; 
+import React from "react";
+
 interface FieldConfig {
     name: "name" | "email" | "phone" | "projectType" | "description";
     label: string;
@@ -22,23 +24,27 @@ export default function RenderField({ field, form }: { field: FieldConfig, form:
                 {field.type === "select" ? (
                      <Select value={formField.value} onValueChange={formField.onChange} defaultValue={formField.value}>
                         <FormControl>
-                            <div className="relative flex items-center group">
+                            <div className="relative flex items-center group w-full">
                                 {field.icon && (
                                     <field.icon className="absolute left-4 w-5 h-5 text-slate-400 group-focus-within:text-blue-500 transition-colors z-10 pointer-events-none" />
                                 )}
+                                
                                 <SelectTrigger 
-                                    className="py-6 w-full bg-slate-50 border-slate-200 focus:bg-white focus:ring-4 focus:ring-blue-500/10 rounded-xl pl-12 text-base text-slate-700 shadow-none data-[placeholder]:text-slate-400"
+                                    className="py-6 w-full bg-slate-50 border-slate-200 focus:bg-white focus:ring-4 focus:ring-blue-500/10 rounded-xl pl-12 pr-4 text-xs md:text-base text-slate-700 shadow-none data-[placeholder]:text-slate-400 overflow-hidden"
                                 >
-                                    <SelectValue placeholder={field.placeholder} />
+                                    <span className="flex-1 min-w-0 truncate text-left block">
+                                        <SelectValue  placeholder={field.placeholder} />
+                                    </span>
                                 </SelectTrigger>
                             </div>
                         </FormControl>
-                        <SelectContent className="bg-white border-slate-100 rounded-xl shadow-xl">
+                        
+                        <SelectContent className="bg-white border-slate-100 rounded-xl shadow-xl max-w-[calc(100vw-2rem)] md:max-w-md">
                             {field.options?.map((opt) => (
                                 <SelectItem 
                                     key={opt} 
                                     value={opt}
-                                    className="cursor-pointer hover:bg-slate-50 focus:bg-slate-50 py-3 text-slate-700"
+                                    className="cursor-pointer hover:bg-slate-50 focus:bg-slate-50 py-3 text-slate-700 whitespace-normal text-left h-auto leading-snug"
                                 >
                                     {opt}
                                 </SelectItem>
@@ -47,20 +53,20 @@ export default function RenderField({ field, form }: { field: FieldConfig, form:
                      </Select>
                 ) : (
                     <FormControl>
-                        <div className="relative flex items-center group"> 
+                        <div className="relative flex items-center group w-full"> 
                             {field.icon && (
                                 <field.icon className="absolute left-4 w-5 h-5 text-slate-400 group-focus-within:text-blue-500 transition-colors z-10" />
                             )}
                             
                             {field.type === "textarea" ? (
                                 <Textarea 
-                                    className="min-h-[120px] w-full bg-slate-50 border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl pl-12 py-3 text-base resize-none transition-all placeholder:text-slate-400 shadow-none"
+                                    className="min-h-[120px] w-full bg-slate-50 border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl pl-12 py-3 text-sm md:text-base resize-none transition-all placeholder:text-slate-400 shadow-none"
                                     placeholder={field.placeholder}
                                     {...formField}
                                 />
                             ) : (
                                 <Input 
-                                    className="h-12 w-full bg-slate-50 border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl pl-12 text-base transition-all placeholder:text-slate-400 shadow-none"
+                                    className="h-12 w-full bg-slate-50 border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 text-sm md:text-base focus:ring-blue-500/10 rounded-xl pl-12 transition-all placeholder:text-slate-400 shadow-none"
                                     placeholder={field.placeholder}
                                     {...formField}
                                 />

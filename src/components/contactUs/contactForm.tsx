@@ -42,7 +42,7 @@
           "Custom SaaS Platform / MVP",
           "AI Agents & Workflow Automation",  
           "Internal Business Tools (CRM/ERP)",
-          "E-commerce & Marketplace Architecture",
+          "E-commerce & Marketplace ",
           "Legacy Modernization",           
           "Other / Consulting"
         ]
