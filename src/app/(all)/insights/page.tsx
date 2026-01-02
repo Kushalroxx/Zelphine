@@ -37,6 +37,7 @@ const POSTS_QUERY = `{
     _type == "post"
     && defined(slug.current)
     && ($category == null || $category in categories[]->slug.current)
+    && !("Case Study" in categories[]->title)
   ] | order(publishedAt desc) [$start...$end] {
     _id, title, slug, publishedAt,
     mainImage {
@@ -52,14 +53,13 @@ const POSTS_QUERY = `{
     && defined(slug.current)
     && ($category == null || $category in categories[]->slug.current)
     && !("Case Study" in categories[]->title)
-  ]),
+  ]), 
   "categories": *[_type == "category" && title != "Case Study"] {
     _id,
     title,
     slug
   }
 }`;
-
 const options = { next: { revalidate: 86400 } };
 
 export default async function IndexPage({
