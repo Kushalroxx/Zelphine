@@ -33,7 +33,7 @@ export default function HomeHero() {
     <>
       <div className='relative overflow-hidden h-full flex items-center justify-center pt-8'>
         <motion.section
-          className="relative flex flex-col justify-center items-center z-10 text-center px-4 pt-12"
+          className="relative flex flex-col justify-center items-center z-10 text-center px-4 pt-16 md:pt-32"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
