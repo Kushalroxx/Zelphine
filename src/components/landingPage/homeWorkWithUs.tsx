@@ -39,25 +39,25 @@ const trustBuilders = [
   {
     title: "Clear Communication",
     description:
-      "No confusing tech talk or vague timelines. We keep you in the loop with regular updates, honest estimates, and open feedback loops. Our process is transparent, collaborative, and designed to give you confidence at every stage of the project.",
+      "No jargon. No surprises. Regular updates, honest timelines, and open feedback — so you always know where your project stands.",
     image: communicationHome,
   },
   {
     title: "Built for Growth, Not Just Launch Day",
     description:
-      "We don’t just build platforms—we build business assets. From MVP planning to performance optimization, we apply real-world strategies to ensure every decision supports your long-term growth, not just a one-time launch.",
+      "We build platforms that scale. From MVP to full performance optimization, every decision fuels long-term growth, not just launch day hype.",
     image: strategyHome, 
   },
   {
-    title: "Reliable Timelines, No Surprises",
+    title: "Reliable Timelines",
     description:
-      "We understand time is money, but we never sacrifice reliability for speed. Our process is built on clear, predictable timelines and no unnecessary delays. We deliver your platform on time, so you can plan your business around it.",
+      "We deliver on time. No shortcuts. No delays. You get predictable timelines so your business can move forward with confidence.",
     image: dataHome, 
   },
   {
     title: "No Wasted Code. No Wasted Budget.",
     description:
-      "We build exactly what you need, and nothing you don't. Forget bloated templates or over-engineered features. We deliver a lean, custom, and scalable platform designed to solve your specific problems and hit your business goals.",
+      "Only what you need, nothing extra. Lean, custom, scalable — designed to hit your business goals without wasting time or budget.",
     image: solutionHome, 
   }
 ];
@@ -73,8 +73,7 @@ export default function HomeWorkWithUs() {
         </>
       </InViewAnimation>
       <InViewAnimation  className='flex justify-center items-center' >
-      <p className='text-muted-foreground mt-6 md:mt-8 break-words whitespace-normal text-base md:text-lg text-center max-w-5xl'>We engineer high-performance web platforms designed to scale —
-                 with AI integration when it drives real impact.</p>
+      <p className='text-muted-foreground mt-6 md:mt-8 break-words whitespace-normal text-base md:text-lg text-center max-w-5xl'>We build high-performance web platforms that scale — with AI only where it drives real impact.</p>
       </InViewAnimation>
         <div className="max-w-5xl mx-auto pt-16 md:pt-24 mb-3 space-y-12  md:space-y-16">
         {

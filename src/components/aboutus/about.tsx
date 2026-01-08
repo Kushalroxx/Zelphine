@@ -18,12 +18,8 @@ export default function About() {
 
   return (
     <div className='bg-background min-h-screen relative overflow-hidden'>
-      
-      {/* --- HERO SECTION: SPLIT LAYOUT --- */}
       <section className="container mx-auto px-6 pt-24 pb-24 md:pt-36 md:pb-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
-          {/* Left: Content */}
           <div className="flex flex-col items-start text-left">
             <InViewAnimation delay={0.1}>
               <div className="flex items-center gap-3 mb-6">
@@ -45,7 +41,7 @@ export default function About() {
 
             <InViewAnimation delay={0.3}>
               <p className="text-xl text-muted-foreground leading-relaxed max-w-lg mb-10">
-                We aren't just a design agency. We are a technical partner that bridges the gap between complex engineering and intuitive design to build platforms that scale.
+                We don’t just design we build scalable platforms that solve real problems. From complex engineering to intuitive design, we make sure your product works, grows, and delivers results.
               </p>
             </InViewAnimation>
 
@@ -68,28 +64,24 @@ export default function About() {
             </InViewAnimation>
           </div>
 
-          {/* Right: Visual / Image */}
-          {/* Using a gradient placeholder or team photo here is best */}
           <InViewAnimation delay={0.3}>
              <div className="relative aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 border border-slate-100 shadow-2xl">
-                {/* Replace this src with a real team photo or abstract 3D shape */}
                 <Image 
-                  src="/assets/aboutUs.png" // Ensure this image is high quality
+                  src="/assets/aboutUs.png"
                   alt="The Zelphine Team"
                   fill
                   className="object-cover"
                 />
                 
-                {/* Overlay Card for "Stats" or "Vibe" */}
                 <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm p-6 rounded-xl border border-white/50 shadow-lg">
                     <div className="flex justify-between items-end">
                         <div>
                             <p className="text-xs font-mono uppercase text-slate-500 mb-1">Founded</p>
-                            <p className="text-2xl font-bold text-slate-900">2023</p>
+                            <p className="text-lg md:text-2xl font-bold text-slate-900">2023</p>
                         </div>
                          <div>
                             <p className="text-xs font-mono uppercase text-slate-500 mb-1">HQ</p>
-                            <p className="text-2xl font-bold text-slate-900">Remote First</p>
+                            <p className="text-lg md:text-2xl font-bold text-slate-900">Remote First</p>
                         </div>
                     </div>
                 </div>
@@ -99,7 +91,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* --- STORY SECTION --- */}
       <section ref={storyRef} className="py-24 bg-slate-50/50 border-t border-slate-100">
         <div className="container mx-auto px-6 max-w-5xl">
             
@@ -116,13 +107,13 @@ export default function About() {
                 <InViewAnimation delay={0.2}>
                     <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
                         <p>
-                            In a world of templates and drag-and-drop builders, <strong className="text-slate-900">craftsmanship</strong> is dying. We started Zelphine to fix that.
+                            In a world of templates and drag-and-drop builders, <strong className="text-slate-900">craftsmanship</strong> is dying. We built Zelphine to fix that.
                         </p>
                         <p>
-                            We believe that your software shouldn't just "work"—it should be a competitive advantage. That means clean code, scalable architecture, and a user experience that feels like magic.
+                            Your software shouldn’t just “work”—it should give you a competitive advantage. Clean code, scalable architecture, and a seamless user experience mean your product performs, grows, and delights your users.
                         </p>
                         <p>
-                             Whether we're automating your workflow or building a SaaS from scratch, we bring the same <strong className="text-slate-900">Product Mindset</strong> to every line of code.
+                             From automating workflows to building SaaS from scratch, we bring a <strong className="text-slate-900">Product Mindset</strong> to every line of code — so you save time, avoid costly mistakes, and scale with confidence.
                         </p>
                     </div>
                 </InViewAnimation>
@@ -132,9 +123,9 @@ export default function About() {
                         <h3 className="text-xl font-bold text-slate-900 mb-6">Our Core Values</h3>
                         <ul className="space-y-4">
                             {[
-                                { title: "Ownership", desc: "We build it like we own it." },
-                                { title: "Transparency", desc: "No hidden fees. No tech jargon." },
-                                { title: "Velocity", desc: "Ship fast, iterate faster." },
+                                { title: "Ownership", desc: "We treat your project like it’s ours." },
+                                { title: "Transparency", desc: "No hidden fees, no tech jargon, full visibility at every step." },
+                                { title: "Velocity", desc: "Ship fast, iterate faster, and see tangible progress every week." },
                             ].map((item, i) => (
                                 <li key={i} className="flex items-start gap-4">
                                     <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-sm shrink-0">

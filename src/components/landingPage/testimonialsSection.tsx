@@ -3,7 +3,7 @@ import { motion, Variants } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui";
 import InViewAnimation from "../majorUi/inViewAnimation";
 import { ShieldCheck, FileCode, Users, ArrowRight } from "lucide-react";
-import { Button } from "../ui/button"; // Assuming you have a button component
+import { Button } from "../ui/button"; 
 import Link from "next/link";
 
 const StandardsSection = () => {
@@ -12,19 +12,19 @@ const StandardsSection = () => {
       title: "30-Day Bug Warranty",
       icon: <ShieldCheck className="w-6 h-6 text-emerald-500" />,
       color: "border-t-emerald-500",
-      text: "We stand by our code. Any bug found within 30 days of launch is fixed for free, with immediate priority. Zero hidden fees.",
+      text: "Any bug found within 30 days of launch is fixed immediately and free. You launch confidently, knowing we’ve got your back.",
     },
     {
-      title: "Hire-Ready Docs",
+      title: "Hire-Ready Documentation",
       icon: <FileCode className="w-6 h-6 text-indigo-500" />,
       color: "border-t-indigo-500",
-      text: "No code dumps. You get full technical documentation and setup guides. Any new developer can pick up the project in under 24 hours.",
+      text: "Full technical documentation and setup guides included. Any new developer can pick up the project in under 24 hours — no ramp-up delays.",
     },
     {
-      title: "The 'No-Junior' Promise",
+      title: "The ‘Expert-First’ Promise",
       icon: <Users className="w-6 h-6 text-orange-500" />,
       color: "border-t-orange-500",
-      text: "No interns learning on your dime. Your project is built strictly by Lead Engineers. Direct access to the builder, not a middleman.",
+      text: "Your project is handled by our most experienced team members. Direct access to the engineers building your platform — no unnecessary middlemen or delays.",
     },
   ];
 
@@ -50,8 +50,7 @@ const StandardsSection = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             <span className="text-primary">Standards</span> We Don’t Compromise On
           </h2>
-          <p className="text-muted-foreground text-sm md:text-lg max-w-xl mx-auto">
-            Discipline, clear ownership, and zero shortcuts. We operate like a product team, not a vendor.
+          <p className="text-muted-foreground text-sm md:text-lg max-w-xl mx-auto">Discipline, clear ownership, and zero shortcuts — we operate like your product team, not a vendor.
           </p>
         </div>
       </InViewAnimation>
@@ -95,8 +94,8 @@ const StandardsSection = () => {
       <InViewAnimation>
         <div className="text-center">
           <Button asChild className="group rounded-full !px-6 font-semibold">
-             <Link href="/contactus" className="flex items-center gap-2">
-                Verify Our Standards
+             <Link href="/case-studies" className="flex items-center gap-2">
+                See How We Maintain Our Standards 
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
              </Link>
           </Button>

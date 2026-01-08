@@ -4,6 +4,7 @@ import { Button } from '../ui'
 import Link from 'next/link'
 import { useRouter } from 'nextjs-toploader/app' 
 import InViewAnimation from '../majorUi/inViewAnimation'
+import { ArrowRight } from 'lucide-react'
 
 export default function ServiceCTA() {
   const router = useRouter()
@@ -15,24 +16,25 @@ export default function ServiceCTA() {
                    border border-border max-w-7xl mx-auto'>
                     <>
       <div>
-        <h1 className='text-3xl md:text-4xl font-bold max-w-2xl'>
-          Let’s Build Something Great Together
+        <h1 className='text-3xl md:text-5xl font-bold max-w-3xl'>
+          Let’s Build Something Great — With Zero Guesswork
         </h1>
       </div>
       <div >
         <p className='text-muted-foreground mt-6 md:mt-8 break-words whitespace-normal text-sm md:text-lg max-w-2xl'>
-          Whether you're just starting or ready to scale, we’re here to craft a web solution that works for you.
+          From MVP to scale, we craft web and AI solutions that actually drive growth and save you time, money, and headaches.
         </p>
       </div>
       <div className='flex items-center gap-4 mt-6 md:mt-12'>
         <Button 
           onClick={() => router.push("/contactus")} 
-          className=' py-4 md:py-6 md:text-base text-xs font-semibold  
+          className=' py-4 md:py-6 px-5! md:text-base text-xs font-semibold group  
                       transition-all duration-300 hover:shadow-lg 
                       shadow-xl shadow-black/40
                       bg-primary text-primary-foreground '
         >
-          Let’s Get Started
+          Start Your Build 
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Button>
       </div>
                     </>

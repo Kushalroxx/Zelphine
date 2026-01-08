@@ -27,19 +27,19 @@ const webAndAiServices = [
   {
     title: "Custom Web Platforms",
     description:
-      "We build fast, scalable, and secure web applications tailored to your business goals.",
+      "Fast, secure apps built to scale revenue, efficiency, and growth baked in from day one.",
     icon: <FaLaptopCode className="text-primary" />,
   },
   {
     title: "AI & Automation",
     description:
-      "From intelligent chatbots to workflow automation and data analysis, we integrate AI to drive real impact.",
+      "AI only where it drives impact: chatbots, workflow automation, and data insights that actually move the needle.",
     icon: <AiOutlineRobot className="text-accent" />,
   },
   {
     title: "UI/UX & Performance",
     description:
-      "Thoughtful, high-performance interfaces designed for user retention and blazing-fast load times.",
+      "Interfaces that retain users and load instantly because speed and clarity matter to your product.",
     icon: <FaTachometerAlt className="text-chart-3" />,
   },
 ];
@@ -48,19 +48,19 @@ const maintenanceServices = [
   {
     title: "Proactive Maintenance",
     description:
-      "We handle all updates, security, and performance tuning to keep your platform reliable and secure.",
+      "Updates, security, and performance handled before problems arise.",
     icon: <FaShieldAlt className="text-chart-2" />,
   },
   {
     title: "On-Demand Support",
     description:
-      "Get expert technical support to handle any issues and keep your business running smoothly.",
+      "Expert engineers ready when you need them no downtime.",
     icon: <MdSupportAgent className="text-chart-5" />,
   },
   {
     title: "Technical SEO & Optimization",
     description:
-      "We continuously monitor and optimize your platform's code and speed for peak performance.",
+      "Continuous code and speed improvements to keep your platform performing at its peak.",
     icon: <FaChartLine className="text-primary" />,
   },
 ];
@@ -69,19 +69,19 @@ const staffingServices = [
   {
     title: "Hire a Developer",
     description:
-      "Augment your team by hiring a vetted, senior-level developer from our roster.",
+      "Plug in a vetted, senior engineer who takes ownership and drives results.",
     icon: <FaUserPlus className="text-accent" />,
   },
   {
     title: "Team Integration",
     description:
-      "Our developers integrate directly into your workflow, tools, and projects, acting as part of your team.",
+      "We work in your workflow and tools like we’re already on your team.",
     icon: <FaUsers className="text-chart-3" />,
   },
   {
     title: "Flexible Contracts",
     description:
-      "Scale your in-house expertise up or down with flexible staffing options to meet your project's needs.",
+      "Scale expertise up or down without wasted budget or friction.",
     icon: <MdOutlineHandshake className="text-chart-5" />,
   },
 ];

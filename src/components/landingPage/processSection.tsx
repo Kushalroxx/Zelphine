@@ -8,53 +8,53 @@ const steps = [
   {
     id: "01",
     title: "Feasibility & ROI Audit",
-    description: "We don't blindly follow orders. We challenge assumptions to ensure viability. If a feature doesn't add value, we cut it.",
-    outcome: "We stop you from building the wrong thing.",
+    description: "We vet every feature to ensure it drives real business value.",
+    outcome: "Avoid wasted time, money, and effort on the wrong features.",
     icon: <ScanSearch className="w-5 h-5" />,
   },
   {
     id: "02",
     title: "Architecture Blueprint",
-    description: "Before coding, we map the entire system. You get a technical schematic, database schema, and prioritized roadmap.",
-    outcome: "No black boxes. You know exactly what you're buying.",
+    description: "Before coding, we map your entire system with clear schematics and a prioritized roadmap.",
+    outcome: "You know exactly what you're investing in and why it matters.",
     icon: <DraftingCompass className="w-5 h-5" />,
   },
   {
     id: "03",
     title: "Rapid Fabrication",
-    description: "2-week agile cycles. You get a deployable link to review at the end of every sprint. We focus on high-value features first.",
-    outcome: "You see progress every single week.",
+    description: "We run 2-week agile sprints with deployable links at the end of each cycle.",
+    outcome: "See tangible progress every week and stay confident in the build.",
     icon: <Zap className="w-5 h-5" />,
   },
   {
     id: "04",
     title: "Production Hardening",
-    description: "We stress-test for high traffic and security. We build systems designed to survive real-world scale and 'Hacker News' spikes.",
-    outcome: "It won't crash when you go viral.",
+    description: "Systems are stress-tested for traffic, security, and real-world scale.",
+    outcome: "Your product won’t crash under pressure — your users stay happy.",
     icon: <Lock className="w-5 h-5" />,
   },
   {
     id: "05",
     title: "The 'No-Handcuffs' Handoff",
-    description: "We transfer all IP, Git repos, and cloud credentials to you. We even record video walkthroughs for your future team.",
-    outcome: "You hold the keys. Total independence.",
+    description: "We hand over all IP, repos, cloud access, and  walkthroughs for your future team.",
+    outcome: "You maintain full control and independence from day one.",
     icon: <Unplug className="w-5 h-5" />,
   },
 ];
 
-// Animation Variants (The "Recipe")
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15, // Delay between each card appearing
+      staggerChildren: 0.15, 
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 }, // Start slightly lower
+  hidden: { opacity: 0, y: 20 }, 
   visible: { 
     opacity: 1, 
     y: 0, 
@@ -81,7 +81,7 @@ export default function ProcessGrid() {
             The Execution <span className="text-indigo-600">Protocol</span>
           </h2>
           <p className="text-lg text-neutral-600">
-            A linear, predictable engineering standard. No chaos.
+            Predictable engineering that drives real business outcomes.
           </p>
         </motion.div>
         <motion.div 
@@ -131,7 +131,7 @@ export default function ProcessGrid() {
              className="bg-indigo-600 p-8 rounded-2xl flex flex-col justify-center items-center text-center text-white shadow-xl hover:bg-indigo-700 transition-colors"
           >
              <h3 className= " text-xl md:text-2xl font-bold mb-2">Ready to Initialize?</h3>
-             <p className="text-indigo-100 mb-6 text-sm">Stop guessing. Start building.</p>
+             <p className="text-indigo-100 mb-6 text-sm">Stop guessing. Start building the right product.</p>
              <button 
                onClick={() => router.push('/contactus')}
                className="bg-white text-xs md:text-sm text-indigo-600 px-8 py-3 rounded-lg font-bold hover:bg-neutral-100 transition-all hover:scale-105 active:scale-95"
