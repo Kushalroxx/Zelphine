@@ -14,6 +14,7 @@ import { motion } from 'framer-motion'
 import ProcessSection from './processSection'
 import Image from 'next/image'
 import heroImage from '../../../public/assets/heroImage.png'
+import ClientFocusedPath from './clientFocusedPart'
 
 export default function LandingPage() {
   return (
@@ -54,6 +55,7 @@ export default function LandingPage() {
       <div className='px-4 md:px-10 space-y-16 md:space-y-24'>
       <HomeWorkWithUs/>
       <ServiceContainer />
+      <ClientFocusedPath/>
       <ProcessSection/>
       <div className='mt-20'>
         <TestimonialsSection/>

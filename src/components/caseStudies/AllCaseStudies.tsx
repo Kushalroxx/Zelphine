@@ -63,7 +63,7 @@ export default function AllCaseStudies({
               <Link href={`/case-studies/${post.slug.current}`} className="block h-full">
                 
                 {/* 1. The Image Container - Sharper corners, subtle border */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg border border-slate-200 bg-slate-100 mb-6 group-hover:border-blue-400/50 transition-colors duration-300">
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-slate-200 bg-slate-100 mb-6 group-hover:border-blue-400/50 transition-colors duration-300">
                    {post.mainImage && (
                     <Image
                       src={post.mainImage.asset.url}

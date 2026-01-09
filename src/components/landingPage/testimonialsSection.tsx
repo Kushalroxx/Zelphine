@@ -3,7 +3,6 @@ import { motion, Variants } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui";
 import InViewAnimation from "../majorUi/inViewAnimation";
 import { ShieldCheck, FileCode, Users, ArrowRight } from "lucide-react";
-import { Button } from "../ui/button"; 
 import Link from "next/link";
 
 const StandardsSection = () => {
@@ -18,13 +17,13 @@ const StandardsSection = () => {
       title: "Hire-Ready Documentation",
       icon: <FileCode className="w-6 h-6 text-indigo-500" />,
       color: "border-t-indigo-500",
-      text: "Full technical documentation and setup guides included. Any new developer can pick up the project in under 24 hours — no ramp-up delays.",
+      text: "Full technical documentation and setup guides included. Any new developer can pick up the project in under 24 hours no ramp-up delays.",
     },
     {
       title: "The ‘Expert-First’ Promise",
       icon: <Users className="w-6 h-6 text-orange-500" />,
       color: "border-t-orange-500",
-      text: "Your project is handled by our most experienced team members. Direct access to the engineers building your platform — no unnecessary middlemen or delays.",
+      text: "Your project is handled by our most experienced team members. Direct access to the engineers building your platform, no unnecessary middlemen or delays.",
     },
   ];
 
@@ -50,7 +49,7 @@ const StandardsSection = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             <span className="text-primary">Standards</span> We Don’t Compromise On
           </h2>
-          <p className="text-muted-foreground text-sm md:text-lg max-w-xl mx-auto">Discipline, clear ownership, and zero shortcuts — we operate like your product team, not a vendor.
+          <p className="text-muted-foreground text-sm md:text-lg max-w-xl mx-auto">Discipline, clear ownership, and zero shortcuts. We operate like your product team, not a vendor.
           </p>
         </div>
       </InViewAnimation>
@@ -92,13 +91,13 @@ const StandardsSection = () => {
 
       {/* NEW CTA SECTION */}
       <InViewAnimation>
-        <div className="text-center">
-          <Button asChild className="group rounded-full !px-6 font-semibold">
+        <div className="flex justify-center">
+          <button  className="relative px-6! bg-primary text-primary-foreground py-3! rounded-full font-bold transition-all shadow-xl flex items-center gap-2 group">
              <Link href="/case-studies" className="flex items-center gap-2">
                 See How We Maintain Our Standards 
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
              </Link>
-          </Button>
+          </button>
         </div>
       </InViewAnimation>
     </section>

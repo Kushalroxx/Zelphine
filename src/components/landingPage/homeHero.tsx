@@ -57,7 +57,7 @@ export default function HomeHero() {
 
     {/* The Text */}
     <span className="text-xs font-medium text-slate-600 group-hover:text-slate-900">
-      New Venture: <span className="font-bold text-slate-900 group-hover:text-purple-700">CareerSathi</span>
+      New in R&D: <span className="font-bold text-slate-900 group-hover:text-purple-700">CareerSathi AI</span>
     </span>
 
     {/* The Arrow */}
