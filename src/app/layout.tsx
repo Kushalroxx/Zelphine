@@ -92,7 +92,7 @@ export default function RootLayout({
          <NextTopLoader color="#9D00FF" showSpinner={false} />
          <Navbar/>
         {children}
-        <ChatWidget/>
+        {/* <ChatWidget/> */}
       </body>
     </html>
   );
