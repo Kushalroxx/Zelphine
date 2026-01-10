@@ -21,7 +21,6 @@ export default function AllCaseStudies({
   return (
     <main className="min-h-screen bg-[#FAFAFA] text-slate-900 selection:bg-blue-100 selection:text-blue-900">
       
-      {/* Header Section */}
       <section className="container mx-auto px-6 pt-32 pb-16 border-b border-slate-200">
         <div className="max-w-4xl">
           <motion.div
@@ -45,7 +44,6 @@ export default function AllCaseStudies({
         </div>
       </section>
       
-      {/* Case Study Grid */}
       <section className="container mx-auto px-6 py-20 mb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-16">
           {posts.map((post, i) => {
@@ -53,62 +51,58 @@ export default function AllCaseStudies({
              
              return (
             <motion.div
-              key={post._id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group"
-            >
-              <Link href={`/case-studies/${post.slug.current}`} className="block h-full">
-                
-                {/* 1. The Image Container - Sharper corners, subtle border */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-slate-200 bg-slate-100 mb-6 group-hover:border-blue-400/50 transition-colors duration-300">
-                   {post.mainImage && (
-                    <Image
-                      src={post.mainImage.asset.url}
-                      alt={post.mainImage.alt || post.title}
-                      fill
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    />
-                   )}
-                   {/* Tech Overlay: Only visible on hover */}
-                   <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors duration-300"></div>
-                </div>
+  key={post._id}
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: i * 0.1, duration: 0.5 }}
+  className="group"
+>
+  <Link href={`/case-studies/${post.slug.current}`} className="block h-full">
+    <div className="relative flex flex-col h-full p-4 transition-all duration-300 rounded-2xl border border-slate-100 bg-white hover:shadow-xl hover:shadow-blue-500/5 group-hover:-translate-y-1">
+      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-100 mb-6">
+        {post.mainImage && (
+          <Image
+            src={post.mainImage.asset.url}
+            alt={post.mainImage.alt || post.title}
+            fill
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+        )}
+        <div className="absolute top-3 left-3 md:hidden">
+            <span className="bg-white/90 backdrop-blur-sm text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase">Case Study</span>
+        </div>
+      </div>
 
-                {/* 2. The "Technical Spec" Data Bar */}
-                <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-4">
-                    <div className="flex flex-wrap gap-2">
-                        {post.categories?.slice(0, 3).map((cat: any) => (
-                             <span key={cat.slug} className="text-[10px] uppercase tracking-wider font-mono text-slate-500 bg-slate-100 px-2 py-1 rounded-sm">
-                                {cat.title}
-                             </span>
-                        ))}
-                    </div>
-                    <span className="text-xs font-mono text-slate-400">
-                        {year}
-                    </span>
-                </div>
+      <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+        <div className="flex flex-wrap gap-2">
+          {post.categories?.slice(0, 2).map((cat: any) => (
+            <span key={cat.slug} className="text-[10px] uppercase tracking-wider font-mono text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
+              {cat.title}
+            </span>
+          ))}
+        </div>
+        <span className="text-xs font-mono text-slate-400">{year}</span>
+      </div>
 
-                {/* 3. The Title (The Hero) */}
-                <div className="flex items-start justify-between group-hover:text-blue-600 transition-colors">
-                  <h2 className="text-3xl font-bold text-slate-900 leading-[1.1] max-w-md group-hover:text-blue-600">
-                    {post.title}
-                  </h2>
-                  
-                  {/* The Arrow Icon */}
-                  <span className="hidden md:inline-block transform translate-x-0 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-3 transition-all duration-300 text-2xl">
-                    ↗
-                  </span>
-                </div>
-
-              </Link>
-            </motion.div>
+      <div className="flex-grow">
+        <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight mb-3 group-hover:text-blue-600 transition-colors">
+          {post.title}
+        </h2>
+      </div>
+      <div className="flex items-center text-blue-600 font-semibold text-sm mt-auto">
+        <span className="group-hover:underline decoration-2 underline-offset-4">View Full Case Study</span>
+        <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-2">
+          →
+        </span>
+      </div>
+    </div>
+  </Link>
+</motion.div>
           )})}
         </div>
       </section>
 
-      {/* Pagination */}
       {totalCount > 1 && (
         <div className="container mx-auto px-6 py-12 border-t border-slate-200">
           <PaginationForBlog

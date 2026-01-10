@@ -33,7 +33,7 @@ export default function HomeHero() {
     <>
       <div className='relative overflow-hidden h-full flex items-center justify-center pt-8'>
         <motion.section
-          className="relative flex flex-col justify-center items-center z-10 text-center px-4 pt-16 md:pt-32"
+          className="relative flex flex-col justify-center items-center z-10 text-center px-4 pt-8 md:pt-32"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -47,7 +47,7 @@ export default function HomeHero() {
   <a 
     href="https://careersathi.labs.zelphine.com" 
     target="_blank"
-    className="group relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:border-purple-300 hover:shadow-[0_4px_12px_rgba(168,85,247,0.15)] transition-all duration-300"
+    className="group relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:border-purple-300 hover:shadow-[0_4px_12px_rgba(168,85,247,0.15)]  transition-all duration-300"
   >
     {/* The Pulsing Dot (Live Status) */}
     <span className="relative z-[50] flex h-2 w-2">
@@ -56,8 +56,10 @@ export default function HomeHero() {
     </span>
 
     {/* The Text */}
-    <span className="text-xs font-medium text-slate-600 group-hover:text-slate-900">
-      New in R&D: <span className="font-bold text-slate-900 group-hover:text-purple-700">CareerSathi AI</span>
+    <span className="text-[10px]! md:text-xs! font-medium text-slate-600 group-hover:text-slate-900">
+     
+ <span className="font-bold text-slate-900 group-hover:text-purple-700"> CareerSathi AI  </span>
+<span> · Beta</span>
     </span>
 
     {/* The Arrow */}
@@ -66,12 +68,12 @@ export default function HomeHero() {
     </svg>
   </a>
 </div>
-              <h1 className="text-[29px] md:text-6xl lg:text-7xl font-bold tracking-tight md:leading-[1.01] leading-[1.2] text-foreground">
+              <h1 className="text-[29px] md:text-6xl lg:text-7xl font-bold tracking-tight md:leading-[1.01] leading-[1.15] text-foreground">
                <span className="text-primary">Product-Grade</span> Engineering <br />That Delivers Outcomes
               </h1>
             </div>
             <div
-              className="mt-6 md:mt-10 max-w-2xl"
+              className="mt-4 md:mt-10 max-w-2xl"
             >
               <p className=" text-base md:text-lg lg:text-xl text-muted-foreground">
               We design and build scalable Web & AI systems — and push back when it matters, so you don’t burn time, money, or momentum.
@@ -79,7 +81,7 @@ export default function HomeHero() {
               </p>
             </div>
             <div
-              className="flex flex-col justify-center sm:flex-row gap-3  md:gap-6 pt-6 md:pt-10"
+              className="flex flex-col justify-center sm:flex-row gap-3  md:gap-6 pt-4 md:pt-10"
             >
               <Button
                 onClick={() => router.push("/contactus")}
