@@ -44,29 +44,26 @@ export default function HomeHero() {
           >
             <div id="title" className="max-w-5xl">
               <div className="flex justify-center mb-2 animate-fade-in-up">
-  <a 
+  {/* <a 
     href="https://careersathi.labs.zelphine.com" 
     target="_blank"
     className="group relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:border-purple-300 hover:shadow-[0_4px_12px_rgba(168,85,247,0.15)]  transition-all duration-300"
   >
-    {/* The Pulsing Dot (Live Status) */}
     <span className="relative z-[50] flex h-2 w-2">
       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
       <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
     </span>
 
-    {/* The Text */}
     <span className="text-[10px]! md:text-xs! font-medium text-slate-600 group-hover:text-slate-900">
      
  <span className="font-bold text-slate-900 group-hover:text-purple-700"> CareerSathi AI  </span>
 <span> · Beta</span>
     </span>
 
-    {/* The Arrow */}
     <svg className="w-4 h-4 text-slate-400 group-hover:text-purple-600 group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
     </svg>
-  </a>
+  </a> */}
 </div>
               <h1 className="text-[29px] md:text-6xl lg:text-7xl font-bold tracking-tight md:leading-[1.01] leading-[1.15] text-foreground">
                <span className="text-primary">Product-Grade</span> Engineering <br />That Delivers Outcomes
