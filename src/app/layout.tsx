@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from 'nextjs-toploader';
 import Navbar from "@/components/sections/navbar";
-import ChatWidget from "@/components/chatbot/chatWidget";
+// import ChatWidget from "@/components/chatbot/chatWidget";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -11,6 +11,7 @@ const poppins = Poppins({
   display: 'swap',
   variable: '--font-poppins',  
 });
+
 export const metadata: Metadata = {
   title: {
     default: "Zelphine | High-Performance Digital Architecture",
@@ -18,31 +19,37 @@ export const metadata: Metadata = {
   },
   description: "We engineer scalable custom platforms, AI agents, and internal business tools. No templates. No fluff. Just high-leverage software for growing businesses.",
   keywords: [
-  "Custom SaaS Development",
-  "Custom Software Engineering Agency",
-  "Next.js 15 Migration Services",
-  "Sanity Headless CMS Developers",
-  "Vercel Enterprise Solutions",
-  "SaaS Performance Optimization",
-  "Legacy System Modernization",
-  "Internal Tool Development",
-  "Custom AI Agent Integration",
-  "Zelphine Engineering",
-  "Zelphine"
-],
+    "Custom SaaS Development",
+    "Custom Software Engineering Agency",
+    "Next.js 15 Migration Services",
+    "Sanity Headless CMS Developers",
+    "Vercel Enterprise Solutions",
+    "SaaS Performance Optimization",
+    "Legacy System Modernization",
+    "Internal Tool Development",
+    "Custom AI Agent Integration",
+    "Zelphine Engineering",
+    "Zelphine"
+  ],
   authors: [{ name: "Zelphine Engineering Team" }],
   creator: "Zelphine",
-  metadataBase: new URL('https://zelphine.com'), 
- icons: {
-  icon: [
-    { url: '/favicon.ico' },
-    { url: '/assets/icon.png', type: 'image/png' }, 
-  ],
-  shortcut: '/favicon.ico',
-  apple: [
-    { url: '/assets/icon.png' }, 
-  ],
-},
+  metadataBase: new URL('https://zelphine.com'),
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' }, 
+      { url: '/icon0.svg', type: 'image/svg+xml' },
+      { url: '/icon1.png', type: 'image/png' }, 
+    ],
+    apple: [
+      { url: '/apple-icon.png', type: 'image/png' },
+    ],
+  },
+  
+  appleWebApp: {
+    title: "Zelphine",
+    statusBarStyle: "default",
+  },
+
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -83,12 +90,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
   return (
     <html lang="en">
-      <body
-        className={`m-0 p-0 ${poppins.className} antialiased`}
-      >
+      <body className={`m-0 p-0 ${poppins.className} antialiased`}>
          <NextTopLoader color="#9D00FF" showSpinner={false} />
          <Navbar/>
         {children}
