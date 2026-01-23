@@ -4,9 +4,10 @@ export async function askVertex(prompt: string): Promise<string> {
   const vertex = new VertexAI({
     project: process.env.GOOGLE_PROJECT_ID!,
     location: "us-central1",
-    // googleAuthOptions: {
-    //   keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS, 
-    // },
+    googleAuthOptions: {
+      // keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS, 
+      credentials:JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS||"")
+    },
   });
   
    const careerModel = vertex.getGenerativeModel({
