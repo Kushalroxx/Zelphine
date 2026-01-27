@@ -77,7 +77,7 @@ export default function About() {
                     <div className="flex justify-between items-end">
                         <div>
                             <p className="text-xs font-mono uppercase text-slate-500 mb-1">Founded</p>
-                            <p className="text-lg md:text-2xl font-bold text-slate-900">2023</p>
+                            <p className="text-lg md:text-2xl font-bold text-slate-900">2025</p>
                         </div>
                          <div>
                             <p className="text-xs font-mono uppercase text-slate-500 mb-1">HQ</p>
