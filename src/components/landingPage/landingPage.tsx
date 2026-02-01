@@ -19,7 +19,7 @@ export default function LandingPage() {
     }} className='w-full overflow-x-hidden bg-background '>
       
       <div className='relative'>
-        <BackgroundBeamsWithCollision className='min-h-[85vh] md:min-h-[95vh] flex flex-col justify-center pb-12 md:pb-24'>
+        <BackgroundBeamsWithCollision className='min-h-[86vh] md:min-h-[95vh] flex flex-col justify-center pb-12 md:pb-24'>
           <HomeHero />
         </BackgroundBeamsWithCollision>     
       </div>
