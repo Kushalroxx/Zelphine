@@ -33,7 +33,7 @@ export default function HomeHero() {
     <>
       <div className='relative overflow-hidden h-full flex items-center justify-center pt-8'>
         <motion.section
-          className="relative flex flex-col justify-center items-center z-10 text-center px-4 pt-8 md:pt-32"
+          className="relative flex flex-col justify-center items-center z-10 text-center px-4 pt-8 md:pt-28"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -43,8 +43,8 @@ export default function HomeHero() {
             variants={itemVariants}
           >
             <div id="title" className="max-w-5xl">
-              <div className="flex justify-center mb-2 animate-fade-in-up">
-  {/* <a 
+              <div className="flex justify-center mb-2 md:mb-6 animate-fade-in-up">
+  <a 
     href="https://careersathi.labs.zelphine.com" 
     target="_blank"
     className="group relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:border-purple-300 hover:shadow-[0_4px_12px_rgba(168,85,247,0.15)]  transition-all duration-300"
@@ -63,22 +63,22 @@ export default function HomeHero() {
     <svg className="w-4 h-4 text-slate-400 group-hover:text-purple-600 group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
     </svg>
-  </a> */}
+  </a>
 </div>
-              <h1 className="text-[29px] md:text-6xl lg:text-7xl font-bold tracking-tight md:leading-[1.01] leading-[1.15] text-foreground">
-               <span className="text-primary">Product-Grade</span> Engineering <br />That Delivers Outcomes
+              <h1 className="text-[36px] md:text-6xl lg:text-7xl font-bold tracking-tight md:leading-[1.01] leading-[1.15] text-foreground">
+               <span className="text-primary">Senior-Level</span> Engineering<br/> for Web & AI Products
               </h1>
             </div>
             <div
-              className="mt-4 md:mt-10 max-w-2xl"
+              className="mt-6 md:mt-10 max-w-2xl"
             >
               <p className=" text-base md:text-lg lg:text-xl text-muted-foreground">
-              We design and build scalable Web & AI systems — and push back when it matters, so you don’t burn time, money, or momentum.
+              We design and build scalable systems and tell you when something’s a bad idea before it becomes an expensive one.
 
               </p>
             </div>
             <div
-              className="flex flex-col justify-center sm:flex-row gap-3  md:gap-6 pt-4 md:pt-10"
+              className="flex flex-col justify-center sm:flex-row gap-4  md:gap-6 pt-6 md:pt-10"
             >
               <Button
                 onClick={() => router.push("/contactus")}
@@ -93,7 +93,7 @@ export default function HomeHero() {
                 className="h-12 px-8 text-xs md:text-base font-semibold bg-card text-card-foreground border border-border/50 sm:border-border shadow-sm
                            hover:bg-muted transform transition-all duration-300 ease-in-out hover:scale-105"
               >
-                See Real Case Studies
+                View a Real Project
               </Button>
             </div>
           </motion.div>

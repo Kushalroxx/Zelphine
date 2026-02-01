@@ -92,9 +92,9 @@ const StandardsSection = () => {
       {/* NEW CTA SECTION */}
       <InViewAnimation>
         <div className="flex justify-center">
-          <button  className="relative px-6! bg-primary text-primary-foreground py-3! rounded-full font-bold transition-all shadow-xl flex items-center gap-2 group">
+          <button  className="relative px-6! text-xs md:text-base bg-primary text-primary-foreground py-3! rounded-full font-bold transition-all shadow-xl flex items-center gap-2 group">
              <Link href="/case-studies" className="flex items-center gap-2">
-                See How We Maintain Our Standards 
+             How We Maintain Our Standards 
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
              </Link>
           </button>

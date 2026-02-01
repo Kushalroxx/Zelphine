@@ -58,7 +58,7 @@ export default function ProcessSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-purple-100 text-purple-700 text-xs font-bold uppercase tracking-wider mb-4 border border-purple-200">
+          <span className="inline-block py-1 px-3 rounded-full bg-purple-100 text-purple-700 text-xs font-semibold uppercase tracking-wider mb-4 border border-purple-200">
             Our Process
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
@@ -125,7 +125,7 @@ export default function ProcessSection() {
           <div className="inline-block relative">
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-200"></div>
             
-            <button onClick={()=> router.push("/contactus")} className="relative px-6! bg-primary text-primary-foreground py-3! rounded-full font-bold transition-all shadow-xl flex items-center gap-2 group">
+            <button onClick={()=> router.push("/contactus")} className="relative px-6! bg-primary text-xs md:text-base text-primary-foreground py-3! rounded-full font-bold transition-all shadow-xl flex items-center gap-2 group">
               Get Your Technical Assessment
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
