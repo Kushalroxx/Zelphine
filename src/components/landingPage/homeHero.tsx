@@ -31,7 +31,7 @@ export default function HomeHero() {
 
   return (
     <>
-      <div className='relative overflow-hidden h-full flex items-center justify-center pt-8'>
+      <div className='relative h-full flex items-center justify-center pt-8'>
         <motion.section
           className="relative flex flex-col justify-center items-center z-10 text-center px-4 pt-8 md:pt-28"
           variants={containerVariants}
@@ -89,7 +89,7 @@ export default function HomeHero() {
 
               </Button>
               <Button
-                onClick={() => router.push("/case-studies")}
+                onClick={() => router.push("/showcase")}
                 className="h-12 px-8 text-xs md:text-base font-semibold bg-card text-card-foreground border border-border/50 sm:border-border shadow-sm
                            hover:bg-muted transform transition-all duration-300 ease-in-out hover:scale-105"
               >

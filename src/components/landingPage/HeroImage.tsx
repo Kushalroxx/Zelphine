@@ -85,7 +85,7 @@ export default function HeroImage() {
                                 </div>
                                 <div className="flex-1 relative flex items-center justify-center bg-slate-50/50 dark:bg-zinc-900/50 overflow-hidden min-h-0">
                                      <div className="absolute w-full h-full bg-primary/5 blur-3xl"></div>
-                                     <div className="w-[150%] md:w-full h-full max-w-none md:max-w-2xl px-0 md:px-8 flex items-center justify-center transform-gpu  origin-center">
+                                     <div className="w-full h-full max-w-none md:max-w-2xl px-0 md:px-8 flex items-center justify-center transform-gpu  origin-center">
                                         <DotLottieReact
                                             src="/business.lottie" 
                                             loop

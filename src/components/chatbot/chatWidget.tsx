@@ -12,22 +12,21 @@ import { useAtom } from 'jotai';
 import { formAtom } from '@/lib/atoms';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useRouter } from 'nextjs-toploader/app';
+import { usePathname } from 'next/navigation';
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  
+  const pathName = usePathname()
   const [messages, setMessages] = useState([
     { id: 2, role: 'ai', text:`**Welcome to Zelphine.**\nI’m here to help you turn your idea into a real, scalable digital product.\nWhether it’s a website, SaaS platform, AI solution, or internal tool — our team builds it end-to-end.\n\n**Tell me what you want to build, and I’ll guide you from idea to execution.**` },
   ]);
   
   const [chatFormData, setChatFormData] = useAtom(formAtom);
   const [input, setInput] = useState("");
+  const [showTooltip, setShowTooltip] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter(); 
-
-  // FIX: Scroll Logic
-  // We use a small timeout to ensure the DOM has updated before scrolling
   const scrollToBottom = () => {
     setTimeout(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -36,7 +35,7 @@ export default function ChatWidget() {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, isLoading, isOpen]); // Also scroll when opening
+  }, [messages, isLoading, isOpen]);
 
   const handleSend = async(e: React.FormEvent) => {
     e.preventDefault();
@@ -76,37 +75,68 @@ export default function ChatWidget() {
   };
 
   return (
+    pathName.startsWith("/showcase/") ? null :
     <>
-      <AnimatePresence>
         {!isOpen && (
-         <motion.button
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsOpen(true)}
-            className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex items-center gap-3 p-3 md:px-5 md:py-3 rounded-full shadow-2xl bg-white border border-slate-200 group hover:border-indigo-500 hover:shadow-indigo-500/20 transition-all duration-300"
+  <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex flex-col items-end">
+    <AnimatePresence>
+      {showTooltip && (
+        <motion.div
+          initial={{ opacity: 0, y: 15, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 10, scale: 0.9 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mb-4 bg-white border border-slate-200 rounded-2xl shadow-xl p-4 w-56 origin-bottom-right"
         >
-            <div className="relative flex items-center justify-center w-8 h-8 md:w-12 md:h-10">
-                <DotLottieReact
-                    src="/assets/support.lottie"
-                    loop
-                    autoplay
-                    style={{ width: "100%", height: "100%" }}
-                />
-                <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-black rounded-full animate-pulse shadow-sm"></span>
-            </div>
-            <div className="hidden md:flex flex-col items-start text-left">
-                <span className="text-[10px] font-mono font-bold uppercase text-slate-500 leading-none mb-0.5 group-hover:text-indigo-600 transition-colors">
-                Online
-                </span>
-                <span className="text-sm font-bold text-slate-900 leading-none">
-                AI Advisor
-                </span>
-            </div>
-        </motion.button>
-        )}
-      </AnimatePresence>
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); 
+              setShowTooltip(false);
+            }}
+            className="absolute top-2 right-2 p-1 text-slate-400 hover:text-slate-700 transition-colors rounded-full hover:bg-slate-100"
+            aria-label="Close message"
+          >
+            <X className="w-3.5 h-3.5" />
+          </button>
+          
+          <p className="text-sm font-medium text-slate-700 pr-3 leading-snug">
+            Hi! I'm your AI Advisor. How can I help you today?
+          </p>
+          <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-b border-r border-slate-200 transform rotate-45 pointer-events-none"></div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    <motion.button
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => {
+        setIsOpen(true);
+        setShowTooltip(false);
+      }}
+      className="flex items-center gap-3 p-3 md:px-5 md:py-3 rounded-full shadow-2xl bg-white border border-slate-200 group hover:border-indigo-500 hover:shadow-indigo-500/20 transition-all duration-300"
+    >
+      <div className="relative flex items-center justify-center w-8 h-8 md:w-12 md:h-10">
+        <DotLottieReact
+          src="/assets/support.lottie"
+          loop
+          autoplay
+          style={{ width: "100%", height: "100%" }}
+        />
+        <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-black rounded-full animate-pulse shadow-sm"></span>
+      </div>
+      <div className="hidden md:flex flex-col items-start text-left">
+        <span className="text-[10px] font-mono font-bold uppercase text-slate-500 leading-none mb-0.5 group-hover:text-indigo-600 transition-colors">
+          Online
+        </span>
+        <span className="text-sm font-bold text-slate-900 leading-none">
+          AI Advisor
+        </span>
+      </div>
+    </motion.button>
+  </div>
+)}
 
       <AnimatePresence>
         {isOpen && (
@@ -122,9 +152,6 @@ export default function ChatWidget() {
               md:inset-auto md:bottom-6 md:right-6 
               md:w-[400px] md:h-[600px] md:max-h-[80vh] md:rounded-2xl md:border md:border-slate-200"
           >
-
-            {/* --- HEADER --- */}
-            {/* shrink-0 ensures header never gets squished by the scroll area */}
             <div className="p-4 flex justify-between items-center shadow-sm border-b border-slate-100 bg-white z-20 shrink-0 h-16">
                 <div className="flex items-center gap-3">
                     <img src="/assets/logo.png" alt="Z" className="w-8 h-8 object-contain" />
@@ -145,12 +172,6 @@ export default function ChatWidget() {
                     <X size={20} className="md:hidden" />
                 </Button>
             </div>
-
-            {/* --- CHAT AREA --- */}
-            {/* FIX: flex-1 min-h-0 
-                - flex-1: Tells it to take all remaining space
-                - min-h-0: CRITICAL. Prevents flex items from overflowing their container
-            */}
             <div className="flex-1 min-h-0 bg-slate-50/50 relative">
                 <ScrollArea className="h-full w-full">
                     <div className="p-4 space-y-5">
@@ -215,9 +236,6 @@ export default function ChatWidget() {
   />
                 </ScrollArea>
             </div>
-
-            {/* --- INPUT AREA --- */}
-            {/* shrink-0 ensures input never disappears */}
             <form onSubmit={handleSend} className="p-4 bg-white border-t border-slate-100 shrink-0 z-20">
                 <div className="relative flex items-center">
                     <Input 

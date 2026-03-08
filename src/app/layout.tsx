@@ -92,9 +92,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`m-0 p-0 ${poppins.className} antialiased`}>
+      <body className={`m-0 p-0 ${poppins.className} antialiased selection:bg-primary selection:text-white`}>
          <NextTopLoader color="#9D00FF" showSpinner={false} />
-         <Navbar/>
+          <Navbar/>
         {children}
         <ChatWidget/> 
       </body>

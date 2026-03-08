@@ -1,4 +1,6 @@
+import ChatWidget from '@/components/chatbot/chatWidget';
 import LandingPage from '@/components/landingPage/landingPage';
+import Navbar from '@/components/sections/navbar';
 import { serverUrl } from '@/lib/exportEnv';
 import React from 'react'
 

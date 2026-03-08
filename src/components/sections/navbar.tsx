@@ -16,7 +16,8 @@ export default function Navbar() {
 
   const navItems = [
     { href: "/#services", label: "SERVICES" },
-    { href: "/case-studies", label: "CASE STUDIES" },
+    // { href: "/case-studies", label: "CASE STUDIES" },
+    { href: "/showcase", label: "SHOWCASE" },
     { href: "/insights", label: "INSIGHTS" },
     // {href:"/ventures", label:"VENTURES"},
     { href: "/about", label: "ABOUT" },
@@ -35,6 +36,7 @@ export default function Navbar() {
   }, []);
 
   return (
+    pathname.startsWith("/showcase/") ? null : 
     <>
    <motion.nav
    aria-label="Main Navigation"

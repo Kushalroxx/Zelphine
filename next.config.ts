@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
         // This makes it *even more* secure.
         pathname: '/images/ccxe30rb/production/**', 
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/djfquzcwz/**',
+      }
     ],
   },
 };

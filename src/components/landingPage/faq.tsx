@@ -7,81 +7,47 @@ import {
 } from "../ui"
 import InViewAnimation from '../majorUi/inViewAnimation'
 const faqData = [
-  // {
-  //   question: "What kind of projects do you take on?",
-  //   answer:
-  //     "We specialize in full-stack web development — from landing pages and SaaS platforms to custom dashboards and e-commerce applications."
-  // },
+  {
+    question: "What types of products do you build?",
+    answer:
+      "We build modern web products including SaaS platforms, AI-powered tools, internal dashboards, startup MVPs, and high-performance marketing websites."
+  },
   {
     question: "How long does a typical project take?",
     answer:
-      "It depends on the scope. Simple websites take 1–2 weeks, while larger platforms may take 3–6 weeks with active collaboration."
+      "Simple websites usually take 1–2 weeks, while full platforms or SaaS MVPs typically take 3–6 weeks depending on the scope and features."
   },
-  // {
-  //   question: "Do you offer fixed pricing or hourly billing?",
-  //   answer:
-  //     "We usually work on fixed-price contracts for clarity, but we also offer hourly or retainer-based billing for long-term collaborations."
-  // },
   {
-    question: "Will you handle hosting, domain, and deployment?",
+    question: "Do you work with startups or solo founders?",
     answer:
-      "Yes! We handle everything end-to-end — including domain setup, server configuration, CI/CD pipelines, and deployment (e.g., Vercel, Netlify, or your choice)."
+      "Yes. Many of our projects are built for startups and solo founders launching their first product. We help turn early ideas into working MVPs."
   },
-  // {
-  //   question: "Will I be able to update the site myself later?",
-  //   answer:
-  //     "Absolutely. We build with scalability in mind. You’ll get a clean admin panel (if needed) or editable CMS integration (like Sanity or Strapi)."
-  // },
   {
-    question: "What if I need support after launch?",
+    question: "Will I own the code after the project is finished?",
     answer:
-      "We provide post-launch support packages as well as on-demand help. You’ll never be left hanging — we’re always just a message away."
+      "Yes. After final payment, you receive full ownership and access to the codebase, deployment setup, and project assets."
   },
   {
-    question: "Do you work with international clients?",
+    question: "What happens after launch?",
     answer:
-      "Yes, we work with clients from all over the world and adjust communication to your preferred timezone and language."
+      "We provide post-launch support, updates, and improvements. You can request ongoing maintenance or reach out whenever new features are needed."
   },
   {
-    question: "Do you offer competitive pricing for startups?",
-    answer:
-      "Yes, we understand budget constraints. We offer special pricing for early-stage startups and solo founders without compromising on quality. Projects can start as low as ₹15,000."
-  },
-  // {
-  //   question: "What technologies do you use most often?",
-  //   answer:
-  //     "We use modern, scalable stacks like React, Next.js, Node.js, TypeScript, Tailwind CSS, PostgreSQL, MongoDB, Firebase, and deploy on platforms like Vercel or Netlify."
-  // },
-  {
-    question: "How many design or feature revisions are included?",
-    answer:
-      "We include 2–3 rounds of revisions by default. We aim to get things right from the start, but you're free to request more with add-on support."
-  },
-  {
-    question: "Who owns the code after delivery?",
-    answer:
-      "You do. Once the project is complete and paid for, full rights and access to the codebase, designs, and assets are handed over to you."
-  },
-  {
-    question: "How do you communicate during a project?",
-    answer:
-      "We typically use WhatsApp, Email, or Slack for async updates, and Google Meet or Zoom for calls. Daily or weekly updates — whichever you prefer."
-  },
-  {
-    question: "Can you give examples of project types and their pricing?",
-    ishtml:true,
+    question: "Can you give examples of project types and pricing?",
+    ishtml: true,
     answer: `<div>
       <ul class="list-disc pl-4 space-y-1">
-        <li><strong>💼 Landing Page</strong> – ₹15K to ₹25K (1–5 sections, fast delivery)</li>
-        <li><strong>🛒 E-commerce Store</strong> – ₹35K to ₹60K (with admin & payment gateway)</li>
-        <li><strong>📊 Admin Dashboard</strong> – ₹40K to ₹70K (role-based, analytics, etc.)</li>
-        <li><strong>🚀 SaaS MVP</strong> – ₹60K+ (custom features, authentication, APIs)</li>
+        <li><strong>Landing Pages</strong> – typically ₹6K to ₹15K depending on design and sections.</li>
+        <li><strong>E-commerce Stores</strong> – usually ₹18K to ₹40K based on features and integrations.</li>
+        <li><strong>Admin Dashboards / Internal Tools</strong> – around ₹20K to ₹45K depending on roles and analytics.</li>
+        <li><strong>SaaS MVPs</strong> – generally starting from ₹30K+ depending on custom features and APIs.</li>
       </ul>
-      <p class="mt-2">Prices vary based on complexity and timeline — we’ll offer a custom quote after a quick chat.</p>
-    </div>
-    `
+      <p class="mt-2">
+        Final pricing depends on project scope and timeline. We provide a clear quote after a short discussion.
+      </p>
+    </div>`
   }
-]
+];
 
 export default function Faq() {
   return (
