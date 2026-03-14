@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react'
 import { useRouter } from 'nextjs-toploader/app'
 import CareerSathiMock from '../showcase/careersathiMock'
 import ApexFitMock from '../showcase/apexfitMock'
+import SerenitySpasMock from '../showcase/serenityspaMock'
 
 const showcaseItems = [
   {
@@ -26,6 +27,16 @@ const showcaseItems = [
     description: "A comprehensive fitness application engineered from the ground up to demonstrate high-converting SaaS architecture and seamless payment integrations.",
     visual: <ApexFitMock />,
     link: "/showcase/apexfit"
+  },
+  {
+    id: "03",
+    name: "Serenity Spa",
+    category: "Wellness & Beauty",
+    badge: "Studio Concept", 
+    badgeColor: "bg-[#F5EDE6] text-[#C6A75E] border-[rgba(198,167,94,0.3)]",
+    description: "A premium luxury wellness platform engineered with smart appointment flows, membership tiers, interactive service cards, and an emotion-first brand experience.",
+    visual: <SerenitySpasMock />,
+    link: "/showcase/serenityspa"
   }
 ];
 
