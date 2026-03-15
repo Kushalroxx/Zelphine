@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react'
 import { useRouter } from 'nextjs-toploader/app'
 import CareerSathiMock from '../showcase/careersathiMock'
 import ApexFitMock from '../showcase/apexfitMock'
-import SerenitySpasMock from '../showcase/serenityspaMock'
+import SerenitySpasMock from '../showcase/serenitySpaMock'
 
 const showcaseItems = [
   {
