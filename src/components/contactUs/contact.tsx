@@ -78,7 +78,7 @@ export default function Contact() {
 
                     <div className="lg:col-span-7">
                         <InViewAnimation delay={0.2} className="h-full">
-                            <div className="rounded-2xl shadow-2xl shadow-blue-900/5 border border-slate-200 p-5 md:p-10 h-full relative overflow-hidden">
+                            <div className="h-full relative ">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-0 translate-x-1/2 -translate-y-1/2"></div>
                                 
                                 <div className="relative z-10">
