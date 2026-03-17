@@ -11,6 +11,7 @@ import RenderField from "./renderField"
 import { useAtom } from "jotai"
 import { formAtom } from "@/lib/atoms"
 import { motion, AnimatePresence } from "framer-motion"
+import { BorderBeam } from "../ui/border-beam"
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name is too short." }),
@@ -38,10 +39,34 @@ interface FieldConfig {
 }
 
 const fields: FieldConfig[] = [
-    { name: "name", label: "Full Name", placeholder: "Jane Doe", type: "input", icon: User },
-    { name: "email", label: "Work Email", placeholder: "jane@company.com", type: "input", icon: Mail },
-    { name: "phone", label: "Phone Number (optional)", placeholder: "+1 (555) 000-0000", type: "input", icon: Phone },
-    { name: "description", label: "Describe your challenge", placeholder: "What are you building, scaling, or fixing?\nMention current tech stack, pain points, or goals.", type: "textarea", icon: MessageSquare }
+    { 
+      name: "name", 
+      label: "Who are we speaking with?", 
+      placeholder: "e.g. Ada Lovelace", 
+      type: "input", 
+      icon: User 
+    },
+    { 
+      name: "email", 
+      label: "Where should we send the proposal?", 
+      placeholder: "founder@yourcompany.com", 
+      type: "input", 
+      icon: Mail 
+    },
+    { 
+      name: "phone", 
+      label: "Direct Line (Optional)", 
+      placeholder: "For a faster, intro-level chat", 
+      type: "input", 
+      icon: Phone 
+    },
+    { 
+      name: "description", 
+      label: "The Vision & The Goal", 
+      placeholder: "Tell us a bit about your idea or the business problem you're trying to solve. Don't worry about the technical details yet — we can figure that out together.", 
+      type: "textarea", 
+      icon: MessageSquare 
+    }
 ]
 
 export function ContactForm() {
@@ -91,8 +116,7 @@ export function ContactForm() {
       
   return (
     <div className="w-full relative">
-      {/* Animated Progress Bar */}
-      <div className="flex gap-2 mb-8 w-full">
+      <div className="flex gap-2 mb-2 w-full">
         <motion.div 
           className="h-1.5 flex-1 rounded-full bg-primary"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -104,10 +128,8 @@ export function ContactForm() {
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6"> 
+        <form onSubmit={form.handleSubmit(onSubmit)} className="px-4 sm:px-8 py-6 sm:py-8 rounded-3xl relative"> 
           <AnimatePresence mode="wait">
-            
-            {/* STEP 1: Interactive Project Details */}
             {step === 0 && (
               <motion.div 
                 key="step1"
@@ -115,12 +137,11 @@ export function ContactForm() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
-                className="space-y-6"
+                className="space-y-5 sm:space-y-6"
               >
-                {/* Step 1 Messaging */}
-                <div className="mb-2">
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Project Details</h3>
-                  <p className="text-slate-500 mt-1">Select your objective and briefly describe your requirements.</p>
+                <div className="mb-2 sm:mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Project Details</h3>
+                  <p className="text-sm sm:text-base text-slate-500 mt-1">Select your objective and briefly describe your requirements.</p>
                 </div>
 
                 <div className="space-y-3">
@@ -130,7 +151,7 @@ export function ContactForm() {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
                             {projectTypes.map((opt, i) => {
                               const isSelected = field.value === opt.id;
                               const Icon = opt.icon;
@@ -143,14 +164,14 @@ export function ContactForm() {
                                   onClick={() => field.onChange(opt.id)}
                                   whileHover={{ scale: 1.02 }}
                                   whileTap={{ scale: 0.98 }}
-                                  className={`cursor-pointer rounded-xl p-3 py-5 flex flex-col items-center justify-center gap-3 transition-colors border-2 ${
+                                  className={`cursor-pointer rounded-xl p-2 py-4 sm:p-3 sm:py-5 flex flex-col items-center justify-center gap-2 sm:gap-3 transition-colors border-2 ${
                                     isSelected 
                                       ? 'border-primary bg-primary/5 text-primary' 
                                       : 'border-slate-200 dark:border-slate-800 bg-transparent text-slate-500 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900/50'
                                   }`}
                                 >
-                                  <Icon className={`w-6 h-6 ${isSelected ? 'text-primary' : 'text-slate-400'}`} />
-                                  <span className={`text-xs font-semibold text-center ${isSelected ? 'text-foreground' : 'text-slate-500'}`}>
+                                  <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${isSelected ? 'text-primary' : 'text-slate-400'}`} />
+                                  <span className={`text-[11px] sm:text-xs font-semibold text-center ${isSelected ? 'text-foreground' : 'text-slate-500'}`}>
                                     {opt.label}
                                   </span>
                                 </motion.div>
@@ -164,17 +185,16 @@ export function ContactForm() {
                   />
                 </div>
 
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+                <motion.div className="pt-1 sm:pt-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
                   <RenderField field={fields[3]} form={form} />
                 </motion.div>
 
-                {/* Fixed Overflow: Standard block button */}
                 <div className="pt-2">
                   <Button 
                     type="button" 
                     onClick={() => setStep(1)}
                     disabled={!isStep1Complete}
-                    className={`w-full py-6 text-base font-bold transition-all rounded-xl flex items-center justify-center gap-2 ${!isStep1Complete ? 'opacity-50 grayscale' : 'hover:scale-[1.02]'}`}
+                    className={`w-full py-5 sm:py-6 text-sm sm:text-base font-bold transition-all rounded-xl flex items-center justify-center gap-2 ${!isStep1Complete ? 'opacity-50 grayscale' : 'hover:scale-[1.02]'}`}
                   >
                     Continue <ArrowRight className="w-4 h-4" />
                   </Button>
@@ -182,7 +202,6 @@ export function ContactForm() {
               </motion.div>
             )}
 
-            {/* STEP 2: Personal Info */}
             {step === 1 && (
               <motion.div 
                 key="step2"
@@ -190,69 +209,64 @@ export function ContactForm() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
-                className="space-y-6"
+                className="space-y-5 sm:space-y-6"
               >
-                {/* Step 2 Messaging */}
-                <div className="mb-2">
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Contact Information</h3>
-                  <p className="text-slate-500 mt-1">Where should our engineering team send the proposal?</p>
+                <div className="mb-4 sm:mb-8">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Contact Information</h3>
+                  <p className="text-sm sm:text-base text-slate-500 mt-1">Where should our engineering team send the proposal?</p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-5">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                     <div className="md:col-span-2">
                         <RenderField field={fields[0]} form={form} />
                     </div>
                     <RenderField field={fields[1]} form={form} />
                     <RenderField field={fields[2]} form={form} />
                 </div>
-
-                {/* Fixed Overflow: Flex-col on mobile, Flex-row on desktop */}
-                <div className="flex flex-col-reverse sm:flex-row gap-3 pt-4">
+                <div className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 pt-4">
                   <Button 
                     type="button" 
                     variant="outline" 
                     onClick={() => setStep(0)}
-                    className="w-full sm:w-auto py-6 px-6 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"
+                    className="w-full sm:w-auto py-5 sm:py-6 px-4 sm:px-6 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"
                   >
-                    <ArrowLeft className="w-5 h-5 mr-2 sm:mr-0" />
-                    <span className="sm:hidden">Back</span>
+                    <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-0" />
+                    <span className="sm:hidden text-sm">Back</span>
                   </Button>
                   
                   <Button 
                     disabled={loading} 
-                    className="w-full sm:flex-1 py-6 text-base font-bold transition-all rounded-xl hover:scale-[1.02] shadow-lg" 
+                    className="w-full sm:flex-1 py-5 sm:py-6 text-sm sm:text-base font-bold transition-all rounded-xl hover:scale-[1.02] shadow-lg" 
                     type="submit"
                   >
-                    {loading ? <Loader2 className="w-6 h-6 animate-spin mr-2" /> : "Submit Request →"} 
+                    {loading ? <Loader2 className="w-5 h-5 sm:w-6 sm:h-6 animate-spin mr-2" /> : "Submit Request →"} 
                   </Button>
                 </div>
               </motion.div>
             )}
 
           </AnimatePresence>
-
-          {/* Alert Dialog (unchanged) */}
           <AlertDialog open={success} onOpenChange={setSuccess}>
-            <AlertDialogContent className="rounded-2xl">
+            <AlertDialogContent className="rounded-2xl w-[90vw] sm:w-full max-w-md">
               <AlertDialogHeader>
-                <AlertDialogTitle className="flex flex-col items-center justify-center gap-4 mb-4 pt-4">
+                <AlertDialogTitle className="flex flex-col items-center justify-center gap-3 sm:gap-4 mb-2 sm:mb-4 pt-4">
                   <motion.div 
                     initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", bounce: 0.5 }}
-                    className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center"
+                    className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center"
                   >
-                      <CheckCircle className="w-8 h-8 text-green-600" />
+                      <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
                   </motion.div>
-                  <span className="text-2xl font-bold text-slate-900">Request Received</span>
+                  <span className="text-xl sm:text-2xl font-bold text-slate-900">Request Received</span>
                 </AlertDialogTitle>
-                <AlertDialogDescription className="text-center text-lg text-slate-600">
+                <AlertDialogDescription className="text-center text-sm sm:text-lg text-slate-600">
                   Thank you for contacting <strong>Zelphine</strong>.<br/> 
                   Our engineering team is reviewing your details. We will respond within 24 hours.
                 </AlertDialogDescription>
               </AlertDialogHeader>
-              <AlertDialogFooter className="flex justify-center sm:justify-center pb-4">
+              <AlertDialogFooter className="flex justify-center sm:justify-center pb-2 sm:pb-4 mt-2">
                 <AlertDialogAction 
                   onClick={() => setSuccess(false)}
-                  className="w-full sm:w-auto font-bold !text-white px-8 bg-primary text-slate hover:bg-primary/90 rounded-full"
+                  className="w-full sm:w-auto font-bold !text-white px-8 py-5 sm:py-2 bg-primary text-slate hover:bg-primary/90 rounded-full"
                 >
                   Close
                 </AlertDialogAction>
@@ -260,9 +274,22 @@ export function ContactForm() {
             </AlertDialogContent>
           </AlertDialog>
 
-          <p className="text-center text-xs text-slate-400 mt-4">
+          <p className="text-center text-[10px] sm:text-xs text-slate-400 pt-4 sm:pt-6">
               Non-disclosure agreement (NDA) available upon request.
           </p>
+          <BorderBeam
+            duration={6}
+            size={400}
+            borderWidth={2.5}
+            className="from-transparent via-primary to-transparent"
+          />
+          <BorderBeam
+            duration={6}
+            delay={3}
+            size={400}
+            borderWidth={2.5}
+            className="from-transparent via-blue-500 to-transparent"
+          />
         </form>
       </Form>
     </div>
