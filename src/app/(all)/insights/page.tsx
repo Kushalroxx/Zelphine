@@ -37,14 +37,16 @@ const POSTS_QUERY = `{
     _type == "post"
     && defined(slug.current)
     && ($category == null || $category in categories[]->slug.current)
-    && !("Case Study" in categories[]->title)
+    && (!defined(categories) || !("Case Study" in categories[]->title)) 
   ] | order(publishedAt desc) [$start...$end] {
-    _id, title, slug, publishedAt,
+    _id, 
+    title, 
+    slug, 
+    publishedAt,
+    "previewText": (pt::text(body)),
     mainImage {
       alt,
-      asset->{
-        url
-      }
+      asset->{ url }
     },
     categories[]->{title, slug}
   },
@@ -52,12 +54,10 @@ const POSTS_QUERY = `{
     _type == "post"
     && defined(slug.current)
     && ($category == null || $category in categories[]->slug.current)
-    && !("Case Study" in categories[]->title)
+    && (!defined(categories) || !("Case Study" in categories[]->title))
   ]), 
   "categories": *[_type == "category" && title != "Case Study"] {
-    _id,
-    title,
-    slug
+    _id, title, slug
   }
 }`;
 const options = { next: { revalidate: 86400 } };

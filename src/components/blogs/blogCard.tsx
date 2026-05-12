@@ -8,6 +8,8 @@ i
 }:{
   post: SanityDocument, i: number
 }) {
+  console.log(post);
+  
   return (
       <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -17,12 +19,12 @@ i
               className="group cursor-pointer flex flex-col h-full"
             >
               <Link href={`/insights/${post.slug?.current || post.slug}`} className="flex flex-col h-full">
-                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-slate-100 mb-6">
+                <div className="relative w-full aspect-[5/3] overflow-hidden rounded-xl bg-slate-100 mb-6">
                   <Image 
                     fill
                     src={post.mainImage?.asset?.url || '/placeholder.png'} 
                     alt={post.title} 
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className=" transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
 
