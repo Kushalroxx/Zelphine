@@ -202,7 +202,7 @@ export default function AllCaseStudies({
                 className={`group flex flex-col gap-10 md:gap-14 lg:gap-20 items-center cursor-pointer ${
                   isReverse ? 'lg:flex-row-reverse' : 'lg:flex-row'
                 }`}
-                // onClick={() => router.push(item.link)} // Re-enable your router push here
+                onClick={() => router.push(item.link)}
               >
                 
                 {/* Visual / Mockup Container */}
