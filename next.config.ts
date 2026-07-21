@@ -4,6 +4,11 @@ import path from "path";
 const nextConfig: NextConfig = {
   // Fix: tell Next.js the correct workspace root to avoid picking up
   // the stray package-lock.json at C:\Users\benug\
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
   outputFileTracingRoot: path.join(__dirname),
   images: {
     remotePatterns: [

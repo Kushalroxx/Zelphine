@@ -5,8 +5,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/admin/', '/studio/'],
+      disallow: ['/admin/', '/studio/', "/api/"],
     },
     sitemap: 'https://zelphine.com/sitemap.xml',
+    host: "https://zelphine.com",
   }
 }

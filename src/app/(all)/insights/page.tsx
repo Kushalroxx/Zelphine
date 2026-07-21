@@ -6,29 +6,96 @@ import { Metadata } from "next";
 const POSTS_PER_PAGE = 12;
 
 export async function generateMetadata({
-  searchParams
+  searchParams,
 }: {
-  searchParams: Promise<{ category?: string }>
+  searchParams: Promise<{ category?: string }>;
 }): Promise<Metadata> {
   const { category } = await searchParams;
-  const categoryTitle = category && category !== "all"
-    ? category.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") + " Insights"
-    : "Engineering Insights & Strategy";
+
+  const categoryName =
+    category && category !== "all"
+      ? category
+          .split("-")
+          .map((word) => word[0].toUpperCase() + word.slice(1))
+          .join(" ")
+      : null;
+
+  const title = categoryName
+    ? `${categoryName} Articles | Software Engineering Blog | Zelphine`
+    : "Software Engineering Blog | AI, Next.js, SaaS & System Design | Zelphine";
+
+  const description = categoryName
+    ? `Explore ${categoryName.toLowerCase()} articles covering software architecture, AI systems, backend engineering, scalable applications, and production development practices.`
+    : "Read in-depth articles on software engineering, AI applications, system architecture, Next.js, backend development, SaaS engineering, performance optimization, and scalable software design.";
+
   return {
-    title: `${categoryTitle} | Zelphine`,
-    description: "Deep dives into software architecture, Next.js performance, AI agent workflows, and the business logic behind scalable systems. Read how we think.",
+    title,
+
+    description,
+
+    keywords: [
+      "software engineering blog",
+      "AI development blog",
+      "system design",
+      "software architecture",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "backend engineering",
+      "AI agents",
+      "SaaS development",
+      "performance optimization",
+      "engineering articles",
+      "technical blog",
+      "software development",
+      ...(categoryName ? [categoryName] : []),
+    ],
+
+    alternates: {
+      canonical: categoryName
+        ? `https://zelphine.com/insights?category=${category}`
+        : "https://zelphine.com/insights",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
     openGraph: {
-      title: `${categoryTitle} | Zelphine Insights`,
-      description: "No fluff. Just engineering standards, architectural patterns, and business strategy for modern platforms.",
-      url: "https://zelphine.com/insights",
+      type: "website",
+
+      url: categoryName
+        ? `https://zelphine.com/insights?category=${category}`
+        : "https://zelphine.com/insights",
+
+      siteName: "Zelphine",
+
+      title,
+
+      description,
+
       images: [
         {
-          url: "/og-image.png", 
+          url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "Zelphine Engineering Insights",
+          alt: categoryName
+            ? `${categoryName} Articles`
+            : "Software Engineering Blog by Zelphine",
         },
       ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+
+      title,
+
+      description,
+
+      images: ["/og-image.png"],
     },
   };
 }

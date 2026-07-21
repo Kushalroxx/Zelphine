@@ -55,7 +55,7 @@ export default function MobileMenu({
 
               
             </ul>
-             <button className="text-3xl cursor-pointer text-foreground" onClick={() => closeMenu()}>
+             <button className="text-xl cursor-pointer text-foreground" onClick={() => closeMenu()}>
                         {isOpen ? <MdClose /> : <TiThMenu />}
                       </button>
 

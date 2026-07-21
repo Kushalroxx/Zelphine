@@ -15,13 +15,13 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
-    { href: "/#services", label: "SERVICES" },
-    // { href: "/case-studies", label: "CASE STUDIES" },
-    { href: "/showcase", label: "SHOWCASE" },
+    { href: "/#capabilities", label: "SERVICES" },
+    { href: "/case-studies", label: "CASE STUDIES" },
+    // { href: "/showcase", label: "SHOWCASE" },
     { href: "/insights", label: "INSIGHTS" },
-    // {href:"/ventures", label:"VENTURES"},
+    {href:"/pricing", label:"Project Estimates"},
     { href: "/about", label: "ABOUT" },
-    { href: "/contactus", label: "CONTACTS" },
+    { href: "/contactus", label: "CONTACT" },
   ];
   const [isOpen, setIsOpen] = useState(false);
 

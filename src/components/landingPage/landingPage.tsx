@@ -12,6 +12,8 @@ import ProcessSection from './processSection'
 import ClientFocusedPath from './clientFocusedPart'
 import HeroImage from './HeroImage'
 import SelectedWork from './selectedWork'
+import ZelphineProcessAnimation from './ZelphineProcessAnimation'
+import EngagementModels from './engagementModels'
 
 export default function LandingPage() {
   return (
@@ -20,16 +22,18 @@ export default function LandingPage() {
     }} className='w-full overflow-x-hidden bg-background '>
       
       <div className='relative'>
-        <BackgroundBeamsWithCollision className='flex h-[40rem] flex-col justify-center pb-12 md:pb-24'>
+        <BackgroundBeamsWithCollision className='flex !h-[45rem] md:!h-[46rem] flex-col justify-center pb-12 md:pb-24'>
           <HomeHero />
         </BackgroundBeamsWithCollision>     
       </div>
-      <HeroImage/>
+      <ZelphineProcessAnimation/>
+      {/* <HeroImage/> */}
       <div className='px-4 md:px-10 space-y-16 md:space-y-24 mt-2 md:mt-8'>
         <HomeWorkWithUs />
         <SelectedWork />
         <ServiceContainer />
-        <ClientFocusedPath />
+        <EngagementModels/>
+        {/* <ClientFocusedPath /> */}
         <ProcessSection />
         <div className='mt-20'>
           <TestimonialsSection />

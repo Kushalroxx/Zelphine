@@ -38,47 +38,46 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${BASE_URL}/insights/${post.slug}`,
     lastModified: new Date(post._updatedAt),
     changeFrequency: 'weekly' as const,
-    priority: 0.7,
+    priority: 0.8,
   }))
 
   const staticRoutes = [
-    {
-      url: BASE_URL,
-      lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 1,
-    },
-    {
-      url: `${BASE_URL}/#services`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/contactus`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/case-studies`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/insights`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    },
-  ]
-
+  {
+    url: BASE_URL,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 1.0,
+  },
+  {
+    url: `${BASE_URL}/case-studies`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.95,
+  },
+  {
+    url: `${BASE_URL}/insights`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  },
+  {
+    url: `${BASE_URL}/pricing`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  },
+  {
+    url: `${BASE_URL}/about`,
+    lastModified: new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.8,
+  },
+  {
+    url: `${BASE_URL}/contactus`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  },
+]
   return [...staticRoutes, ...caseStudyUrls, ...insightUrls]
 }

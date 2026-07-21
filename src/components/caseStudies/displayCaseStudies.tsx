@@ -38,7 +38,7 @@ export default function DisplayCaseStudies({
 
     return (
       <figure className="my-12 group">
-        <div className="rounded-lg overflow-hidden border border-slate-200 shadow-sm transition-shadow hover:shadow-md">
+        <div className="rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md">
             <Image
             src={urlFor(value).image(value).fit("max").auto("format").url()}
             alt={value.alt || "Blog post image"}
@@ -59,7 +59,7 @@ export default function DisplayCaseStudies({
 
   return (
     <InViewAnimation>
-      <main className="container mx-auto min-h-screen max-w-5xl px-6 py-24 flex flex-col gap-10 bg-white selection:bg-blue-100 selection:text-blue-900">
+      <main className="container mx-auto min-h-screen max-w-5xl px-6 py-24 flex flex-col gap-10 selection:bg-blue-100 selection:text-blue-900">
         
         {/* Navigation - Uppercase Tech Style */}
         <div className="flex items-center justify-between border-b border-slate-100 pb-4">
@@ -68,7 +68,7 @@ export default function DisplayCaseStudies({
               className="group flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-slate-900 transition-colors uppercase tracking-widest"
             >
               <span className="transition-transform group-hover:-translate-x-1">←</span> 
-              All Projects
+              All Case Studies
             </Link>
             {
             //   post.categories[0].title && (
@@ -79,10 +79,13 @@ export default function DisplayCaseStudies({
         </div>
 
         {/* Header - Massive & Bold */}
-        <div className="flex flex-col gap-8">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[0.95] tracking-tight">
-                {post.title}
+        <div className="flex flex-col gap-4 md:gap-8">
+           <div>
+             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-[0.95] tracking-tight mb-3 md:mb-5">
+                {post.title.split(":")[0].trim()}:
             </h1>
+            <h2 className='text-base md:text-xl lg:text-2xl font-semibold'>{post.title.split(":")[1].trim()}</h2>
+           </div>
             
             {/* Metadata Bar - "Blueprint" Style */}
             <div className="flex flex-wrap items-center gap-6 text-sm text-slate-500 border-y border-slate-100 py-6">
@@ -112,7 +115,7 @@ export default function DisplayCaseStudies({
 
         {/* Hero Image - Sharp Corners */}
         {postImageUrl && (
-          <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-lg overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
+          <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-lg overflow-hidden border border-slate-200 shadow-sm ">
             <Image
               src={postImageUrl}
               alt={post.title}
@@ -162,13 +165,13 @@ export default function DisplayCaseStudies({
                                 href="/contactus" 
                                 className="w-full sm:w-auto rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-900 shadow-lg hover:bg-blue-50 focus-visible:outline-2 transition-all transform hover:-translate-y-1"
                             >
-                                Start Your Project
+                                Discuss Your Project
                             </Link>
                             <Link 
                                 href="/case-studies" 
                                 className="text-sm font-bold text-slate-400 hover:text-white transition-colors uppercase tracking-widest"
                             >
-                                View Portfolio →
+                                View All Case studies →
                             </Link>
                         </div>
                     </div>

@@ -39,17 +39,27 @@ export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
   const { slug } = await params;
-  const { projectId, dataset } = client.config();
-const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
 
-  const post = await client.fetch<SanityDocument>(POST_QUERY, { slug }, options);
+  const { projectId, dataset } = client.config();
+
+  const urlFor = (source: SanityImageSource) =>
+    projectId && dataset
+      ? imageUrlBuilder({ projectId, dataset }).image(source)
+      : null;
+
+  const post = await client.fetch<SanityDocument>(
+    POST_QUERY,
+    { slug },
+    options
+  );
 
   if (!post) {
     return {
       title: "Article Not Found | Zelphine",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
@@ -58,29 +68,82 @@ const urlFor = (source: SanityImageSource) =>
     : "/og-image.png";
 
   return {
-    title: `${post.title} | Zelphine Insights`,
-    description: post.excerpt,
+    title: `${post.title} | Software Engineering Blog | Zelphine`,
+
+    description:
+      post.excerpt ||
+      `${post.title} — engineering insights covering software architecture, AI, backend systems, scalable applications, and modern web development.`,
+
+    keywords: [
+      "software engineering",
+      "software architecture",
+      "AI",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "backend development",
+      "system design",
+      "technical article",
+      "engineering blog",
+      post.title,
+    ],
+
+    alternates: {
+      canonical: `https://zelphine.com/insights/${slug}`,
+    },
+
+    authors: [
+      {
+        name: "Zelphine Engineering Team",
+        url: "https://zelphine.com",
+      },
+    ],
+
+    creator: "Zelphine",
+
+    publisher: "Zelphine",
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      url: `https://zelphine.com/insights/${slug}`,
       type: "article",
+
+      url: `https://zelphine.com/insights/${slug}`,
+
+      siteName: "Zelphine",
+
+      title: `${post.title} | Software Engineering Blog`,
+
+      description:
+        post.excerpt ||
+        "Software engineering insights, architecture decisions, AI systems, and scalable development.",
+
       publishedTime: post.publishedAt,
+
       authors: ["Zelphine Engineering Team"],
+
       images: [
         {
-          url: ogImageUrl || "",
+          url: ogImageUrl || "/og-image.png",
           width: 1200,
           height: 630,
           alt: post.title,
         },
       ],
     },
+
     twitter: {
       card: "summary_large_image",
-      title: post.title,
+
+      title: `${post.title} | Zelphine`,
+
       description: post.excerpt,
-      images: [ogImageUrl || ""],
+
+      images: [ogImageUrl || "/og-image.png"],
     },
   };
 }

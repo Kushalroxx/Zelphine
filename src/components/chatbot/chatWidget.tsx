@@ -1,270 +1,83 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import { X, Send, Terminal, Minimize2, Loader2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button, Input } from '@/components/ui';
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"; 
-import Link from 'next/link';
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { useAtom } from 'jotai';
-import { formAtom } from '@/lib/atoms';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { useRouter } from 'nextjs-toploader/app';
 import { usePathname } from 'next/navigation';
 
-export default function ChatWidget() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const pathName = usePathname()
-  const [messages, setMessages] = useState([
-    { id: 2, role: 'ai', text:`**Welcome to Zelphine.**\nI’m here to help you turn your idea into a real, scalable digital product.\nWhether it’s a website, SaaS platform, AI solution, or internal tool — our team builds it end-to-end.\n\n**Tell me what you want to build, and I’ll guide you from idea to execution.**` },
-  ]);
-  
-  const [chatFormData, setChatFormData] = useAtom(formAtom);
-  const [input, setInput] = useState("");
+export default function WhatsAppWidget() {
   const [showTooltip, setShowTooltip] = useState(true);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const router = useRouter(); 
-  const scrollToBottom = () => {
-    setTimeout(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  };
+  const pathName = usePathname();
 
+  // IMPORTANT: Replace with your actual WhatsApp business number (Include country code, no + or spaces)
+  const phoneNumber = "918515013506"; 
+  const prefilledMessage = "Hi Zelphine! I'm interested in discussing a new project.";
+  const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(prefilledMessage)}`;
+
+  // Auto-hide the tooltip after 8 seconds so it doesn't clutter the screen
   useEffect(() => {
-    scrollToBottom();
-  }, [messages, isLoading, isOpen]);
+    const timer = setTimeout(() => setShowTooltip(false), 8000);
+    return () => clearTimeout(timer);
+  }, []);
 
-  const handleSend = async(e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    const inputMsg = input;
-    const newMsg = { id: Date.now(), role: 'user', text: input };
-    
-    setMessages(prev => [...prev, newMsg]);
-    setInput("");
-    setIsLoading(true); 
-
-    try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: [...messages, newMsg] }),
-      })
-      const data = await res.json();
-      
-      if(data.data){
-        const reply = JSON.parse(data.data);
-        setChatFormData(reply);
-        setIsOpen(false);
-        router.push("/contactus");
-        setMessages(prev => [...prev, { id: Date.now() + 1, role: 'ai', text: reply.zelphineAi }]);
-        return;
-      }
-
-      setMessages(prev => [...prev, { id: Date.now() + 1, role: 'ai', text: data.message }]);
-    } catch (error) {
-      setMessages(prev => [...prev, { id: Date.now() + 1, role: 'ai', text: "Sorry, something went wrong. Please try again." }]);
-      setInput(inputMsg) 
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // Hide on showcase pages
+  if (pathName?.startsWith("/showcase/")) return null;
 
   return (
-    pathName.startsWith("/showcase/") ? null :
-    <>
-        {!isOpen && (
-  <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex flex-col items-end">
-    <AnimatePresence>
-      {showTooltip && (
-        <motion.div
-          initial={{ opacity: 0, y: 15, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 10, scale: 0.9 }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mb-4 bg-white border border-slate-200 rounded-2xl shadow-xl p-4 w-56 origin-bottom-right"
-        >
-          <button
-            onClick={(e) => {
-              e.stopPropagation(); 
-              setShowTooltip(false);
-            }}
-            className="absolute top-2 right-2 p-1 text-slate-400 hover:text-slate-700 transition-colors rounded-full hover:bg-slate-100"
-            aria-label="Close message"
-          >
-            <X className="w-3.5 h-3.5" />
-          </button>
-          
-          <p className="text-sm font-medium text-slate-700 pr-3 leading-snug">
-            Hi! I'm your AI Advisor. How can I help you today?
-          </p>
-          <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-b border-r border-slate-200 transform rotate-45 pointer-events-none"></div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-    <motion.button
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={() => {
-        setIsOpen(true);
-        setShowTooltip(false);
-      }}
-      className="flex items-center gap-3 p-3 md:px-5 md:py-3 rounded-full shadow-2xl bg-white border border-slate-200 group hover:border-indigo-500 hover:shadow-indigo-500/20 transition-all duration-300"
-    >
-      <div className="relative flex items-center justify-center w-8 h-8 md:w-12 md:h-10">
-        <DotLottieReact
-          src="/assets/support.lottie"
-          loop
-          autoplay
-          style={{ width: "100%", height: "100%" }}
-        />
-        <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-black rounded-full animate-pulse shadow-sm"></span>
-      </div>
-      <div className="hidden md:flex flex-col items-start text-left">
-        <span className="text-[10px] font-mono font-bold uppercase text-slate-500 leading-none mb-0.5 group-hover:text-indigo-600 transition-colors">
-          Online
-        </span>
-        <span className="text-sm font-bold text-slate-900 leading-none">
-          AI Advisor
-        </span>
-      </div>
-    </motion.button>
-  </div>
-)}
-
+    <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[100] flex flex-col items-end pointer-events-none">
       <AnimatePresence>
-        {isOpen && (
+        {showTooltip && (
           <motion.div
-            initial={{ y: 20, opacity: 0, scale: 0.95 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={{ y: 20, opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="fixed z-[100] flex flex-col bg-white shadow-2xl overflow-hidden
-              /* Full screen on mobile */
-              inset-0 
-              /* Fixed size on desktop */
-              md:inset-auto md:bottom-6 md:right-6 
-              md:w-[400px] md:h-[600px] md:max-h-[80vh] md:rounded-2xl md:border md:border-slate-200"
+            initial={{ opacity: 0, y: 15, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.9 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="relative mb-4 bg-white border border-slate-200 rounded-2xl shadow-xl p-4 w-56 origin-bottom-right pointer-events-auto"
           >
-            <div className="p-4 flex justify-between items-center shadow-sm border-b border-slate-100 bg-white z-20 shrink-0 h-16">
-                <div className="flex items-center gap-3">
-                    <img src="/assets/logo.png" alt="Z" className="w-8 h-8 object-contain" />
-                    <div>
-                        <h3 className="text-sm font-bold leading-none mb-1 text-slate-900">Project Advisor</h3>
-                        <div className="flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Online</span>
-                        </div>
-                    </div>
-                </div>
-                <Button 
-                    variant={"ghost"}
-                    onClick={() => setIsOpen(false)} 
-                    className="h-8 w-8 p-0 hover:bg-slate-100 rounded-lg text-slate-500"
-                >
-                    <Minimize2 size={18} className="hidden md:block" /> 
-                    <X size={20} className="md:hidden" />
-                </Button>
-            </div>
-            <div className="flex-1 min-h-0 bg-slate-50/50 relative">
-                <ScrollArea className="h-full w-full">
-                    <div className="p-4 space-y-5">
-                        {messages.map((m) => (
-                            <div 
-                                key={m.id} 
-                                className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}
-                            >
-                                <span className="text-[10px] font-mono text-slate-400 mb-1 px-1 uppercase">
-                                    {m.role === 'user' ? 'You' : m.role === 'system' ? 'System' : 'Zelphine AI'}
-                                </span>
-                                <div 
-                                    className={`max-w-[85%] p-3.5 text-sm leading-relaxed shadow-sm font-medium relative whitespace-pre-wrap ${
-                                        m.role === 'user' 
-                                        ? 'bg-indigo-600 text-white rounded-2xl rounded-tr-sm' 
-                                        : 'bg-white border border-slate-200 text-slate-700 rounded-2xl rounded-tl-sm'
-                                    }`}
-                                >
-                                {m.role === "ai" ? (
-                                    <ReactMarkdown 
-                                        components={{
-                                            p: ({ children }) => <p className="mb-2 last:mb-0 leading-6">{children}</p>,
-                                            ul: ({ children }) => <ul className="list-disc ml-4 mb-2">{children}</ul>,
-                                            ol: ({ children }) => <ol className="list-decimal ml-4 mb-2">{children}</ol>,
-                                            li: ({ children }) => <li className="mb-1">{children}</li>,
-                                            h3: ({ children }) => <h3 className="text-sm font-bold mt-3 mb-1">{children}</h3>,
-                                            strong: ({ children }) => <span className="font-bold text-slate-900">{children}</span>,
-                                            a: ({ children, href }) => (
-                                                <Link target="_blank" href={href||"#"} className="text-indigo-600 underline underline-offset-2 hover:text-indigo-700">
-                                                    {children}
-                                                </Link>
-                                            ),
-                                        }} 
-                                        remarkPlugins={[remarkGfm]}
-                                    >
-                                        {m.text}
-                                    </ReactMarkdown>
-                                ) : (
-                                    m.text
-                                )}
-                                </div>
-                            </div>
-                        ))}
-
-                        {isLoading && (
-                            <div className="flex flex-col items-start animate-in fade-in slide-in-from-bottom-2 duration-300">
-                                <span className="text-[10px] font-mono text-slate-400 mb-1 px-1 uppercase">Zelphine AI</span>
-                                <div className="bg-white border border-indigo-100 p-4 rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-3">
-                                    <Loader2 className="w-4 h-4 text-indigo-500 animate-spin" />
-                                    <div className="flex gap-1">
-                                        <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-                                        <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-                                        <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                        <div ref={messagesEndRef} className="h-1" />
-                    </div>
-                    <ScrollBar 
-    className="w-2 [&>div]:!bg-indigo-500 [&>div]:hover:!bg-indigo-600" 
-  />
-                </ScrollArea>
-            </div>
-            <form onSubmit={handleSend} className="p-4 bg-white border-t border-slate-100 shrink-0 z-20">
-                <div className="relative flex items-center">
-                    <Input 
-                        className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl pl-4 pr-12 py-6 focus-visible:ring-indigo-500/20 focus-visible:border-indigo-500 placeholder:text-slate-400"
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                        placeholder="Type your challenge..."
-                        disabled={isLoading}
-                    />
-                    <Button 
-                        type="submit" 
-                        disabled={!input.trim() || isLoading}
-                        className="absolute right-2 p-2 h-8 w-8 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition-all text-white"
-                    >
-                        <Send size={14} />
-                    </Button>
-                </div>
-
-                <div className="text-center mt-3 flex justify-center items-center gap-1.5 opacity-50">
-                    <Terminal size={10} />
-                    <span className="text-[10px] text-slate-500 font-mono">
-                        Powered by Zelphine Neural Engine
-                    </span>
-                </div>
-            </form>
-
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setShowTooltip(false);
+              }}
+              className="absolute top-2 right-2 p-1 text-slate-400 hover:text-slate-700 transition-colors rounded-full hover:bg-slate-100"
+              aria-label="Close message"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+            
+            <p className="text-sm font-medium text-slate-700 pr-3 leading-snug">
+              Prefer to talk to a human? Chat directly with our engineering team.
+            </p>
+            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-b border-r border-slate-200 transform rotate-45 pointer-events-none"></div>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+
+      <motion.a
+        href={waLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="flex items-center gap-3 p-3 md:px-5 md:py-3 rounded-full shadow-2xl bg-[#25D366] border border-[#128C7E] group hover:bg-[#20ba5a] hover:shadow-[#25D366]/30 transition-all duration-300 pointer-events-auto"
+      >
+        <div className="relative flex items-center justify-center w-6 h-6 md:w-8 md:h-8 text-white">
+          {/* Authentic WhatsApp SVG Icon */}
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+          </svg>
+        </div>
+        <div className="hidden md:flex flex-col items-start text-left">
+          <span className="text-[10px] font-mono font-bold uppercase text-white/80 leading-none mb-0.5 group-hover:text-white transition-colors">
+            Talk to an engineer
+          </span>
+          <span className="text-sm font-bold text-white leading-none">
+            WhatsApp Us
+          </span>
+        </div>
+      </motion.a>
+    </div>
   );
 }

@@ -44,7 +44,9 @@ const urlFor = (source: SanityImageSource) =>
   projectId && dataset
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
-  const post = await client.fetch<SanityDocument>(POST_QUERY, { slug }, options);
+  const post = await client.fetch<SanityDocument>(POST_QUERY, { slug }, 
+    options
+  );
 
   if (!post) {
     return {
@@ -57,29 +59,85 @@ const urlFor = (source: SanityImageSource) =>
     : "/og-image.png"; 
 
   return {
+  title: `${post.title} | AI & Software Engineering Case Study | Zelphine`,
+
+  description:
+    post.excerpt ||
+    `${post.title}: A detailed software engineering case study covering system architecture, implementation decisions, technologies, engineering tradeoffs, and production insights.`,
+
+  keywords: [
+    "software engineering case study",
+    "AI project",
+    "system architecture",
+    "software architecture",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Node.js",
+    "AI application",
+    "SaaS",
+    "engineering portfolio",
+    "full stack project",
+    post.title,
+  ],
+
+  alternates: {
+    canonical: `https://zelphine.com/case-studies/${slug}`,
+  },
+
+  authors: [
+    {
+      name: "Zelphine",
+      url: "https://zelphine.com",
+    },
+  ],
+
+  creator: "Zelphine",
+
+  publisher: "Zelphine",
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    type: "article",
+
+    url: `https://zelphine.com/case-studies/${slug}`,
+
+    title: `${post.title} | Software Engineering Case Study`,
+
+    description:
+      post.excerpt ||
+      "Explore the engineering decisions, architecture, technologies, and implementation behind this software project.",
+
+    siteName: "Zelphine",
+
+    publishedTime: post.publishedAt,
+
+    images: [
+      {
+        url: ogImageUrl || "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${post.title} - Software Engineering Case Study`,
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
     title: `${post.title} | Engineering Case Study`,
-    description: post.excerpt || `Deep dive into the architecture and engineering logic behind ${post.title}. Built by Zelphine.`,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt || "High-performance architecture breakdown.",
-      url: `https://zelphine.com/case-studies/${slug}`,
-      type: "article",
-      images: [
-        {
-          url: ogImageUrl || "",
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt || "High-performance architecture breakdown.",
-      images: [ogImageUrl || ""],
-    },
-  };
+
+    description:
+      post.excerpt ||
+      "Architecture breakdown, engineering tradeoffs, and implementation details.",
+
+    images: [ogImageUrl || "/og-image.png"],
+  },
+};
 }
 
 export default async function page({
@@ -93,7 +151,15 @@ const urlFor = (source: SanityImageSource) =>
   projectId && dataset
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
-  const post = await client.fetch<SanityDocument>(POST_QUERY, { slug }, options);
+    let post
+    try {
+      
+      post = await client.fetch<SanityDocument>(POST_QUERY, { slug }, 
+        // options
+      );
+    } catch (error) {
+      console.log(error);
+    }
   
   if (!post) {
     notFound();
