@@ -59,9 +59,9 @@ export default function DisplayBlog({
 
   return (
     <InViewAnimation>
-      <main className="container mx-auto min-h-screen max-w-5xl px-6 py-24 flex flex-col gap-10">
+      <main className="container mx-auto min-h-screen max-w-5xl px-4 md:px-6 py-20 md:py-24 flex flex-col gap-8 md:gap-10">
         
-        <div className="flex items-center justify-between">
+        <div className="flex items-start justify-between">
             <Link 
               href="/insights" 
               className="group flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-purple-600 transition-colors"
@@ -71,7 +71,7 @@ export default function DisplayBlog({
             </Link>
             {
               post.categories[0].title && (
-                <span className="text-sm font-medium text-purple-600 bg-purple-50 px-3 py-1 rounded-full border border-purple-100">
+                <span className="text-[9px] md:text-xs font-medium text-purple-600 bg-purple-50 px-3 py-1 rounded-full border border-purple-100">
                { post.categories[0].title }
             </span>)
             }
@@ -132,24 +132,24 @@ export default function DisplayBlog({
 
             <div className="mt-20">
                 <div className="relative overflow-hidden rounded-3xl bg-slate-900 px-6 py-12 shadow-2xl sm:px-12 sm:py-16 text-center">
-                    <div className="relative z-10 flex flex-col items-center gap-6">
+                    <div className="relative z-10 flex flex-col md:items-center gap-4 md:gap-6">
                         <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                            Build scalable software, <br/>
+                            Build software, <br/>
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">without the headache.</span>
                         </h2>
-                        <p className="mx-auto max-w-xl text-lg text-gray-300">
+                        <p className="mx-auto max-w-xl text-base md:text-lg text-gray-300">
                             We use the same engineering rigor from our internal labs to build your platform. Ready to start?
                         </p>
-                        <div className="flex items-center gap-4 mt-2">
+                        <div className="flex flex-col md:flex-row md:items-center gap-4 mt-2">
                             <Link 
                                 href="/contactus" 
-                                className="rounded-full bg-white px-8 py-3.5 text-sm font-bold text-slate-900 shadow-sm hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-all transform hover:-translate-y-1"
+                                className="rounded-full bg-white px-8 py-3.5 text-xs md:text-sm font-bold text-slate-900 shadow-sm hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-all transform hover:-translate-y-1"
                             >
                                 Start Your Project
                             </Link>
                             <Link 
                                 href="/insights" 
-                                className="text-sm font-semibold leading-6 text-white hover:text-purple-300 transition-colors"
+                                className="text-xs md:text-sm font-semibold leading-6 text-white hover:text-purple-300 transition-colors"
                             >
                                 Read more insights <span aria-hidden="true">→</span>
                             </Link>

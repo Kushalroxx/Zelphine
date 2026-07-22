@@ -27,20 +27,20 @@ export default function AllBlogs({
 
   return (
     <main className="min-h-screen bg-[#FDFDFD] text-slate-900 selection:bg-blue-100 selection:text-blue-900">
-      <section className="container mx-auto px-6 pt-32 pb-16">
+      <section className="container mx-auto px-6 pt-20 md:pt-32 pb-16">
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h5 className="text-blue-600 font-bold tracking-widest uppercase text-xs mb-4">
+            <h5 className="text-blue-600 font-bold tracking-widest uppercase text-[10px] md:text-xs mb-4">
               The Agency
             </h5>
-            <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter text-slate-900 mb-8 leading-[0.9]">
+            <h1 className="text-[36px] md:text-6xl lg:text-7xl font-extrabold tracking-tighter text-slate-900 mb-8 leading-[0.9]">
               Insights.
             </h1>
-            <p className="text-xl md:text-2xl text-slate-500 font-light max-w-2xl leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-slate-500 font-light max-w-2xl leading-relaxed">
               Engineering, design, and strategy for building the next generation of digital products.
             </p>
           </motion.div>
@@ -49,7 +49,7 @@ export default function AllBlogs({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="flex gap-3 w-max px-4" >
+              className="flex gap-3 w-max" >
               {categories.map((cat) => (
                 <Button
                   variant="default"
@@ -61,7 +61,7 @@ export default function AllBlogs({
                       router.push(`/insights?category=${cat.slug}`);
                     }
                   }}
-                  className={` ${activeCategory === cat.slug || activeCategory === null && cat.title === "All"
+                  className={`text-xs md:text-sm ${activeCategory === cat.slug || activeCategory === null && cat.title === "All"
                       ? ' '
                       : 'hover:bg-slate-950/10 border border-slate-300 bg-slate-100 text-slate-700'
                     }`}

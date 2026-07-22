@@ -59,10 +59,10 @@ export default function DisplayCaseStudies({
 
   return (
     <InViewAnimation>
-      <main className="container mx-auto min-h-screen max-w-5xl px-6 py-24 flex flex-col gap-10 selection:bg-blue-100 selection:text-blue-900">
+      <main className="container mx-auto min-h-screen max-w-5xl px-4 md:px-6 py-20 md:py-24 flex flex-col gap-10 selection:bg-blue-100 selection:text-blue-900">
         
         {/* Navigation - Uppercase Tech Style */}
-        <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div className="flex items-center justify-between border-b border-slate-100 md:pb-4">
             <Link 
               href="/case-studies" 
               className="group flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-slate-900 transition-colors uppercase tracking-widest"
@@ -152,24 +152,24 @@ export default function DisplayCaseStudies({
 
             {/* CTA - Dark & Serious */}
             <div className="mt-24">
-                <div className="relative overflow-hidden rounded-2xl bg-slate-900 px-8 py-16 text-center shadow-2xl">
-                    <div className="relative z-10 flex flex-col items-center gap-8">
+                <div className="relative overflow-hidden rounded-2xl bg-slate-900 px-8 py-8 md:py-16 text-center shadow-2xl">
+                    <div className="relative z-10 flex flex-col items-center gap-5 md:gap-8">
                         <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl max-w-lg">
                             Ready to engineer your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">next big win?</span>
                         </h2>
-                        <p className="mx-auto max-w-xl text-lg text-slate-400 font-light">
+                        <p className="mx-auto max-w-xl text-base md:text-lg text-slate-400 font-light">
                             We use the same engineering rigor from this project to build your platform.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
                             <Link 
                                 href="/contactus" 
-                                className="w-full sm:w-auto rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-900 shadow-lg hover:bg-blue-50 focus-visible:outline-2 transition-all transform hover:-translate-y-1"
+                                className="w-full sm:w-auto rounded-full bg-white px-8 py-3 text-xs md:text-sm font-bold text-slate-900 shadow-lg hover:bg-blue-50 focus-visible:outline-2 transition-all transform hover:-translate-y-1"
                             >
                                 Discuss Your Project
                             </Link>
                             <Link 
                                 href="/case-studies" 
-                                className="text-sm font-bold text-slate-400 hover:text-white transition-colors uppercase tracking-widest"
+                                className="text-[10px] md:text-sm font-bold text-slate-400 hover:text-white transition-colors uppercase tracking-widest"
                             >
                                 View All Case studies →
                             </Link>

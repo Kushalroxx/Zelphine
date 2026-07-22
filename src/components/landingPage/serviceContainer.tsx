@@ -71,7 +71,7 @@ const capabilities = [
 
 export default function ServicesSection() {
   return (
-    <div id='capabilities' className='w-full max-w-6xl mx-auto px-6 pb-16 pt-16 md:pt-24'>
+    <div id='capabilities' className='w-full max-w-6xl mx-auto md:px-6 pb-16 pt-16 md:pt-24'>
       
       {/* Section Header */}
       <motion.div 

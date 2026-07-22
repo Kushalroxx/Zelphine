@@ -18,9 +18,9 @@ export default function ServiceCTA() {
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={fadeUp as any}
-        className="px-6 mt-28 md:mt-40 mb-20 max-w-5xl mx-auto text-center"
+        className=" mt-28 md:mt-40 mb-20 max-w-5xl mx-auto text-center"
       >
-        <div className="bg-primary/5 rounded-[3rem] p-9 md:p-16 border border-primary/10 relative overflow-hidden flex flex-col justify-center items-center">
+        <div className="bg-primary/5 rounded-[3rem] p-10 md:p-16 border border-primary/10 relative overflow-hidden flex flex-col justify-center items-center">
           {/* Glow effects inside CTA */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-40 bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
         <h1 className='text-2xl md:text-5xl font-bold max-w-3xl'>
